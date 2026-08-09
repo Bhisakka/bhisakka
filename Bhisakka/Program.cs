@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bhisakka
@@ -13,7 +16,7 @@ namespace Bhisakka
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI.Test());
+            Application.Run(new DatabaseTest());
         }
     }
 }

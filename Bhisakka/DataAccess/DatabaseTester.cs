@@ -13,16 +13,16 @@ namespace Bhisakka.DataAccess
                 {
                     string sql = "SELECT version();";
 
-                    using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
+                    using (var cmd = new NpgsqlCommand(sql, conn))
                     {
-                        string version = cmd.ExecuteScalar()?.ToString();
-                        return $"Connection Successful!\n\nServer Info: {version}";
+                        var version = cmd.ExecuteScalar()?.ToString();
+                        return $"Local Connection Successful!\n\nServer Info: {version}";
                     }
                 }
             }
             catch (Exception ex)
             {
-                return $"Connection Failed:\n\n{ex.Message}";
+                return $"Local Connection Failed:\n\n{ex.Message}";
             }
         }
     }

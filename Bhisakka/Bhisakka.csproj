@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DA0E4F16-0B3A-455A-B269-FC13412DF395}</ProjectGuid>
+    <ProjectGuid>{88322776-34C1-4E5F-8F3D-97E926981F0A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Bhisakka</RootNamespace>
     <AssemblyName>Bhisakka</AssemblyName>
@@ -98,14 +98,53 @@
   <ItemGroup>
     <Compile Include="DataAccess\DatabaseHelper.cs" />
     <Compile Include="DataAccess\DatabaseTester.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\Test.cs">
+    <Compile Include="LMaterial\LMaterialColorScheme.cs" />
+    <Compile Include="LMaterial\LMaterialTheme.cs" />
+    <Compile Include="LMaterial\LMaterialTypography.cs" />
+    <Compile Include="LMaterial\LMaterialDrawing.cs" />
+    <Compile Include="LMaterial\LMaterialAnimation.cs" />
+    <Compile Include="LMaterial\LMaterialButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialSelectionControls.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialFields.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialLists.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialContainers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialProgress.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialMenus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialLabels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LMaterial\LMaterialForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Test.Designer.cs">
-      <DependentUpon>Test.cs</DependentUpon>
+    <Compile Include="LMaterial\LMaterialDialogs.cs" />
+    <Compile Include="DatabaseTest.cs">
+      <SubType>Form</SubType>
     </Compile>
+    <Compile Include="DatabaseTest.Designer.cs">
+      <DependentUpon>DatabaseTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DatabaseTest.resx">
+      <DependentUpon>DatabaseTest.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -115,13 +154,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UI\Test.resx">
-      <DependentUpon>Test.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="client.pfx">
+    <None Include="connections.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="connections.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -135,9 +170,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
