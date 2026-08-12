@@ -1,4 +1,5 @@
-﻿using System.Security.Cryptography;
+﻿using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Bhisakka.Util
@@ -19,6 +20,10 @@ namespace Bhisakka.Util
                 return builder.ToString();
             }
         }
-
+        
+        public static bool VerifySha256Hash(string rawData,string hashedData)
+        {
+            return CryptoUtil.ComputeSha256Hash(rawData) == hashedData;
+        }
     }
 }
