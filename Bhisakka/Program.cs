@@ -16,7 +16,10 @@ namespace Bhisakka
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DatabaseTest());
+            Application.Run(new HashingTest()); 
+
+            //string PasswordTesting = "Enter your password";
+            //Console.WriteLine(PasswordTesting);
         }
     }
 }
