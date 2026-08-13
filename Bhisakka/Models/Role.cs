@@ -29,11 +29,7 @@ namespace Bhisakka.Models
 
         public string GetRoleName()
         {
-            return this.RoleNamepublic void SetRoleId(int RoleId)
-            {
-                this.RoleId = RoleId;
-            }
-
+            return this.RoleName;
         }
     }
 }
