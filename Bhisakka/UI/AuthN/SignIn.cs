@@ -2,14 +2,6 @@
 using Bhisakka.Services;
 using MaterialComponents;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Bhisakka.UI.AuthN
 {
@@ -32,7 +24,7 @@ namespace Bhisakka.UI.AuthN
                     TxtUsername.IsError = true;
                     TxtUsername.ErrorText = "Username cannot be empty";
                 }
-                
+
                 if (string.IsNullOrEmpty(Password))
                 {
                     TxtPassword.IsError = true;
@@ -45,22 +37,35 @@ namespace Bhisakka.UI.AuthN
             {
                 AuthService AuthNService = new AuthService();
                 User CurrentUser = AuthNService.Authenticate(Username, Password);
-                int RoleId = CurrentUser.GetUserRole().GetRoleId();
 
-                switch (RoleId)
+                if (CurrentUser != null)
                 {
-                    case 1:
-                        // You are a Doctor
-                        break;
-                    case 2:
-                        // You are a Receptionist
-                        break;
-                    case 3:
-                        // You are a Pharmacist
-                        break;
-                    default:
-                        // Unknown role - database corrupted
-                        break;
+                    int RoleId = CurrentUser.GetUserRole().GetRoleId();
+
+                    switch (RoleId)
+                    {
+                        case 1:
+                            // You are a Doctor
+                            break;
+                        case 2:
+                            // You are a Receptionist
+                            break;
+                        case 3:
+                            // You are a Pharmacist
+                            break;
+                        default:
+                            // Unknown role - database corrupted
+                            break;
+                    }
+                }
+                else
+                {
+                    TxtUsername.Text = string.Empty;
+                    TxtPassword.Text = string.Empty;
+
+                    LMaterialDialog.Show(this, "Invalid Credentials", "Username or/and password incorrect");
+
+                    TxtUsername.Focus();
                 }
             }
         }
