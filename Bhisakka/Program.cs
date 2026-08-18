@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Bhisakka.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,11 @@ namespace Bhisakka
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HashingTest()); 
+
+            var mainForm = new WindowManagerTestForm1();
+            WindowManager.GetInstance().RegisterForm(mainForm);
+
+            Application.Run(mainForm);
 
             //string PasswordTesting = "Enter your password";
             //Console.WriteLine(PasswordTesting);
