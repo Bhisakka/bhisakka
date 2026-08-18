@@ -168,6 +168,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="UI\AuthN\SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AuthN\SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Util\CryptoUtil.cs" />
     <Compile Include="Util\WindowManager.cs" />
     <Compile Include="WindowManagerTestForm1.cs">
@@ -197,6 +203,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\AuthN\SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WindowManagerTestForm1.resx">
       <DependentUpon>WindowManagerTestForm1.cs</DependentUpon>
     </EmbeddedResource>
@@ -232,8 +241,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

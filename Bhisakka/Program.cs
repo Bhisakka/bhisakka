@@ -1,8 +1,5 @@
 ﻿using Bhisakka.Util;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bhisakka
@@ -18,7 +15,7 @@ namespace Bhisakka
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var mainForm = new WindowManagerTestForm1();
+            var mainForm = new UI.AuthN.SignIn();
             WindowManager.GetInstance().RegisterForm(mainForm);
 
             Application.Run(mainForm);

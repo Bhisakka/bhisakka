@@ -61,7 +61,7 @@ namespace Bhisakka.Models
             return this.UserRole;
         }
 
-        public void SetUserRole()
+        public void SetUserRole(Role UserRole)
         {
             this.UserRole = UserRole;
         }
