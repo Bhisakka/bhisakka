@@ -114,6 +114,7 @@
     <Compile Include="DataAccess\AuthRepository.cs" />
     <Compile Include="DataAccess\DatabaseHelper.cs" />
     <Compile Include="DataAccess\DatabaseTester.cs" />
+    <Compile Include="DataAccess\PatientRepository.cs" />
     <Compile Include="HashingTest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +164,7 @@
       <DependentUpon>DatabaseTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\GlobalSession.cs" />
+    <Compile Include="Models\Patient.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
@@ -173,6 +175,12 @@
     </Compile>
     <Compile Include="UI\AuthN\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PatientRegistration\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PatientRegistration\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\CryptoUtil.cs" />
     <Compile Include="Util\WindowManager.cs" />
