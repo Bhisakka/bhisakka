@@ -6,9 +6,6 @@ namespace Bhisakka
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
@@ -19,9 +16,6 @@ namespace Bhisakka
             WindowManager.GetInstance().RegisterForm(mainForm);
 
             Application.Run(mainForm);
-
-            //string PasswordTesting = "Enter your password";
-            //Console.WriteLine(PasswordTesting);
         }
     }
 }
