@@ -10,6 +10,10 @@ using System.Windows.Forms;
 using Bhisakka;
 using System.IO;
 using NAudio.Wave;
+<<<<<<< HEAD
+using System.Data.SqlClient;
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
 
 namespace Bhisakka.UI
 {
@@ -31,6 +35,12 @@ namespace Bhisakka.UI
         private DateTime _lastLevelUpdate = DateTime.MinValue;
         private readonly int _levelUpdateIntervalMs = 50; // update progress bar at most ~20Hz
 
+<<<<<<< HEAD
+        // For Save functionality
+        private DateTime? recordingStartedAt = null;
+
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
 
         public ConsultationForm()
         {
@@ -143,6 +153,11 @@ namespace Bhisakka.UI
                 btnStop.Enabled = true;
                 MessageBox.Show($"Recording started. File will be saved to:\n{outputFilePath}", "Recording", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lmtRecordStatus.Text = "Recording...";
+<<<<<<< HEAD
+
+                recordingStartedAt = DateTime.Now;
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             }
             catch (Exception ex)
             {
@@ -316,5 +331,88 @@ namespace Bhisakka.UI
         {
 
         }
+<<<<<<< HEAD
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lmtSave_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnSave_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(outputFilePath) || !File.Exists(outputFilePath))
+            {
+                MessageBox.Show("No recording available to save.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // TODO: obtain the actual consultation id from your form/context
+            int consultationId = 123;
+
+            // Determine duration
+            double durationSeconds = 0;
+            try
+            {
+                using (var reader = new WaveFileReader(outputFilePath))
+                {
+                    durationSeconds = reader.TotalTime.TotalSeconds;
+                }
+            }
+            catch
+            {
+                // ignore - duration stays 0
+            }
+
+            DateTime startedAt = recordingStartedAt ?? File.GetCreationTime(outputFilePath);
+
+            byte[] audioBytes;
+            try
+            {
+                audioBytes = File.ReadAllBytes(outputFilePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to read recording file: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Update this connection string (or read from App.config)
+            string connStr = @"Data Source=.\SQLEXPRESS;Initial Catalog=YourDatabase;Integrated Security=True;";
+
+            // Make sure audio_logs has an audio_data VARBINARY(MAX) column if you want to store the bytes
+            string sql = @"
+INSERT INTO audio_logs (consultation_id, file_path, started_at, duration_seconds, audio_data)
+VALUES (@consultationId, @filePath, @startedAt, @durationSeconds, @audioData);
+";
+
+            try
+            {
+                using (var conn = new SqlConnection(connStr))
+                using (var cmd = new SqlCommand(sql, conn))
+                {
+                    cmd.Parameters.Add("@consultationId", SqlDbType.Int).Value = consultationId;
+                    cmd.Parameters.Add("@filePath", SqlDbType.NVarChar, 512).Value = (object)outputFilePath ?? DBNull.Value;
+                    cmd.Parameters.Add("@startedAt", SqlDbType.DateTime).Value = startedAt;
+                    cmd.Parameters.Add("@durationSeconds", SqlDbType.Float).Value = durationSeconds;
+                    cmd.Parameters.Add("@audioData", SqlDbType.VarBinary, -1).Value = audioBytes;
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+
+                MessageBox.Show("Recording saved to database.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Database save failed: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
     }
 }

@@ -38,12 +38,20 @@ namespace Bhisakka.UI
             this.lmtPatientName = new MaterialComponents.LMaterialTextBox();
             this.lmtConsultationNotes = new MaterialComponents.LMaterialGroupBox();
             this.lmtAudioRecording = new MaterialComponents.LMaterialGroupBox();
+<<<<<<< HEAD
+            this.lmtPgBar = new MaterialComponents.LMaterialProgressBar();
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             this.lmtRecordStatus = new MaterialComponents.LMaterialLabel();
             this.lmtSave = new MaterialComponents.LMaterialButton();
             this.btnRecord = new MaterialComponents.LMaterialButton();
             this.btnStop = new MaterialComponents.LMaterialButton();
             this.comboMicrophones = new MaterialComponents.LMaterialComboBox();
+<<<<<<< HEAD
+            this.lblTitle = new System.Windows.Forms.Label();
+=======
             this.lmtPgBar = new MaterialComponents.LMaterialProgressBar();
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             this.lmgpPatientsinfo.SuspendLayout();
             this.lmtAudioRecording.SuspendLayout();
             this.SuspendLayout();
@@ -114,6 +122,18 @@ namespace Bhisakka.UI
             this.lmtAudioRecording.TabStop = false;
             this.lmtAudioRecording.Text = "Audio Recording";
             // 
+<<<<<<< HEAD
+            // lmtPgBar
+            // 
+            this.lmtPgBar.Location = new System.Drawing.Point(224, 34);
+            this.lmtPgBar.Name = "lmtPgBar";
+            this.lmtPgBar.Size = new System.Drawing.Size(240, 28);
+            this.lmtPgBar.TabIndex = 6;
+            this.lmtPgBar.TabStop = false;
+            this.lmtPgBar.Text = "lMaterialProgressBar1";
+            // 
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             // lmtRecordStatus
             // 
             this.lmtRecordStatus.AutoSize = true;
@@ -138,6 +158,10 @@ namespace Bhisakka.UI
             this.lmtSave.TabIndex = 2;
             this.lmtSave.Text = "Save";
             this.lmtSave.UseVisualStyleBackColor = true;
+<<<<<<< HEAD
+            this.lmtSave.Click += new System.EventHandler(this.lmtSave_Click);
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             // 
             // btnRecord
             // 
@@ -177,6 +201,18 @@ namespace Bhisakka.UI
             this.comboMicrophones.Size = new System.Drawing.Size(240, 42);
             this.comboMicrophones.TabIndex = 5;
             // 
+<<<<<<< HEAD
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblTitle.Location = new System.Drawing.Point(389, 23);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(296, 32);
+            this.lblTitle.TabIndex = 6;
+            this.lblTitle.Text = "PATIENT CONSULTATION";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
+=======
             // lmtPgBar
             // 
             this.lmtPgBar.Location = new System.Drawing.Point(224, 34);
@@ -185,12 +221,17 @@ namespace Bhisakka.UI
             this.lmtPgBar.TabIndex = 6;
             this.lmtPgBar.TabStop = false;
             this.lmtPgBar.Text = "lMaterialProgressBar1";
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             // 
             // ConsultationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 658);
+<<<<<<< HEAD
+            this.Controls.Add(this.lblTitle);
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
             this.Controls.Add(this.lmtAudioRecording);
             this.Controls.Add(this.lmtConsultationNotes);
             this.Controls.Add(this.lmgpPatientsinfo);
@@ -202,6 +243,10 @@ namespace Bhisakka.UI
             this.lmtAudioRecording.ResumeLayout(false);
             this.lmtAudioRecording.PerformLayout();
             this.ResumeLayout(false);
+<<<<<<< HEAD
+            this.PerformLayout();
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
 
         }
 
@@ -219,5 +264,9 @@ namespace Bhisakka.UI
         private MaterialComponents.LMaterialButton btnStop;
         private LMaterialComboBox comboMicrophones;
         private LMaterialProgressBar lmtPgBar;
+<<<<<<< HEAD
+        private Label lblTitle;
+=======
+>>>>>>> f9b4e328b9b7c41011b7f99d507121724a6340d4
     }
 }
