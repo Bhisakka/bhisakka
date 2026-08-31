@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -96,8 +111,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataAccess\AuthRepository.cs" />
     <Compile Include="DataAccess\DatabaseHelper.cs" />
     <Compile Include="DataAccess\DatabaseTester.cs" />
+    <Compile Include="DataAccess\PatientRepository.cs" />
+    <Compile Include="HashingTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HashingTest.Designer.cs">
+      <DependentUpon>HashingTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="LMaterial\LMaterialColorScheme.cs" />
     <Compile Include="LMaterial\LMaterialTheme.cs" />
     <Compile Include="LMaterial\LMaterialTypography.cs" />
@@ -140,10 +163,44 @@
     <Compile Include="DatabaseTest.Designer.cs">
       <DependentUpon>DatabaseTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\GlobalSession.cs" />
+    <Compile Include="Models\Patient.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AuthService.cs" />
+    <Compile Include="UI\AuthN\SignIn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AuthN\SignIn.Designer.cs">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PatientRegistration\Registration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PatientRegistration\Registration.Designer.cs">
+      <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\CryptoUtil.cs" />
+    <Compile Include="Util\WindowManager.cs" />
+    <Compile Include="WindowManagerTestForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowManagerTestForm1.Designer.cs">
+      <DependentUpon>WindowManagerTestForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WindowManagerTestForm2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WindowManagerTestForm2.Designer.cs">
+      <DependentUpon>WindowManagerTestForm2.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="DatabaseTest.resx">
       <DependentUpon>DatabaseTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HashingTest.resx">
+      <DependentUpon>HashingTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -154,6 +211,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\AuthN\SignIn.resx">
+      <DependentUpon>SignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowManagerTestForm1.resx">
+      <DependentUpon>WindowManagerTestForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WindowManagerTestForm2.resx">
+      <DependentUpon>WindowManagerTestForm2.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="connections.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -171,5 +237,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
