@@ -12,7 +12,7 @@ namespace Bhisakka
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var mainForm = new UI.AuthN.SignIn();
+            var mainForm = new UI.ConsultationForm();
             WindowManager.GetInstance().RegisterForm(mainForm);
 
             Application.Run(mainForm);
