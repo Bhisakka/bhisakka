@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace Bhisakka.UI.PatientRegistration
@@ -20,194 +20,200 @@ namespace Bhisakka.UI.PatientRegistration
 
         private void InitializeComponent()
         {
-            lMaterialLabel1 = new MaterialComponents.LMaterialLabel();
-            txtAge = new MaterialComponents.LMaterialTextBox();
-            rdoMale = new MaterialComponents.LMaterialRadioButton();
-            rdoFemale = new MaterialComponents.LMaterialRadioButton();
-            txtFirstName = new MaterialComponents.LMaterialTextBox();
-            txtContact = new MaterialComponents.LMaterialTextBox();
-            txtLastName = new MaterialComponents.LMaterialTextBox();
-            lMaterialTableLayoutPanel1 = new MaterialComponents.LMaterialTableLayoutPanel();
-            txtAddress = new MaterialComponents.LMaterialTextBox();
-            lMaterialButton1 = new MaterialComponents.LMaterialButton();
-            lMaterialTableLayoutPanel1.SuspendLayout();
-            SuspendLayout();
-            // 
-            // lMaterialLabel1
-            // 
-            lMaterialLabel1.BackColor = Color.Transparent;
-            lMaterialTableLayoutPanel1.SetColumnSpan(lMaterialLabel1, 4);
-            lMaterialLabel1.Dock = DockStyle.Fill;
-            lMaterialLabel1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lMaterialLabel1.ForeColor = Color.FromArgb(34, 26, 21);
-            lMaterialLabel1.Location = new Point(19, 8);
-            lMaterialLabel1.Name = "lMaterialLabel1";
-            lMaterialLabel1.Size = new Size(1233, 100);
-            lMaterialLabel1.TabIndex = 21;
-            lMaterialLabel1.Text = "Patient Registration";
-            lMaterialLabel1.TextAlign = ContentAlignment.MiddleCenter;
-            // 
-            // txtAge
-            // 
-            txtAge.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            txtAge.LabelText = "Age";
-            txtAge.Location = new Point(19, 262);
-            txtAge.Margin = new Padding(3, 16, 3, 8);
-            txtAge.Name = "txtAge";
-            txtAge.Size = new Size(544, 65);
-            txtAge.TabIndex = 17;
-            // 
-            // rdoMale
-            // 
-            rdoMale.Anchor = AnchorStyles.Left;
-            rdoMale.AutoSize = true;
-            rdoMale.Font = new Font("Segoe UI", 11F);
-            rdoMale.ForeColor = Color.FromArgb(34, 26, 21);
-            rdoMale.Location = new Point(874, 272);
-            rdoMale.Margin = new Padding(3, 16, 3, 8);
-            rdoMale.Name = "rdoMale";
-            rdoMale.Size = new Size(69, 29);
-            rdoMale.TabIndex = 20;
-            rdoMale.TabStop = true;
-            rdoMale.Text = "Male";
-            rdoMale.UseVisualStyleBackColor = true;
-            // 
-            // rdoFemale
-            // 
-            rdoFemale.Anchor = AnchorStyles.Left;
-            rdoFemale.AutoSize = true;
-            rdoFemale.Font = new Font("Segoe UI", 11F);
-            rdoFemale.ForeColor = Color.FromArgb(34, 26, 21);
-            rdoFemale.Location = new Point(953, 272);
-            rdoFemale.Margin = new Padding(3, 16, 3, 8);
-            rdoFemale.Name = "rdoFemale";
-            rdoFemale.Size = new Size(85, 29);
-            rdoFemale.TabIndex = 22;
-            rdoFemale.TabStop = true;
-            rdoFemale.Text = "Female";
-            rdoFemale.UseVisualStyleBackColor = true;
-            // 
+            this.tblLayout = new MaterialComponents.LMaterialTableLayoutPanel();
+            this.lblTitle = new MaterialComponents.LMaterialLabel();
+            this.txtFirstName = new MaterialComponents.LMaterialTextBox();
+            this.txtLastName = new MaterialComponents.LMaterialTextBox();
+            this.dtpDob = new MaterialComponents.LMaterialDateTimePicker();
+            this.pnlGender = new MaterialComponents.LMaterialFlowLayoutPanel();
+            this.lblGender = new MaterialComponents.LMaterialLabel();
+            this.rdoMale = new MaterialComponents.LMaterialRadioButton();
+            this.rdoFemale = new MaterialComponents.LMaterialRadioButton();
+            this.rdoOther = new MaterialComponents.LMaterialRadioButton();
+            this.txtContact = new MaterialComponents.LMaterialTextBox();
+            this.txtAddress = new MaterialComponents.LMaterialTextBox();
+            this.btnSave = new MaterialComponents.LMaterialButton();
+            this.tblLayout.SuspendLayout();
+            this.pnlGender.SuspendLayout();
+            this.SuspendLayout();
+            //
+            // tblLayout
+            //
+            this.tblLayout.ColumnCount = 2;
+            this.tblLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            this.tblLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            this.tblLayout.Dock = DockStyle.Fill;
+            this.tblLayout.Padding = new Padding(24, 16, 24, 16);
+            this.tblLayout.RowCount = 8;
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));   // title
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));   // first / last
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));   // dob
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));   // gender
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));   // contact
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 130F));  // address
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Absolute, 56F));   // save
+            this.tblLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));   // filler
+            this.tblLayout.Controls.Add(this.lblTitle, 0, 0);
+            this.tblLayout.Controls.Add(this.txtFirstName, 0, 1);
+            this.tblLayout.Controls.Add(this.txtLastName, 1, 1);
+            this.tblLayout.Controls.Add(this.dtpDob, 0, 2);
+            this.tblLayout.Controls.Add(this.pnlGender, 0, 3);
+            this.tblLayout.Controls.Add(this.txtContact, 0, 4);
+            this.tblLayout.Controls.Add(this.txtAddress, 0, 5);
+            this.tblLayout.Controls.Add(this.btnSave, 0, 6);
+            this.tblLayout.SetColumnSpan(this.lblTitle, 2);
+            this.tblLayout.SetColumnSpan(this.dtpDob, 2);
+            this.tblLayout.SetColumnSpan(this.pnlGender, 2);
+            this.tblLayout.SetColumnSpan(this.txtContact, 2);
+            this.tblLayout.SetColumnSpan(this.txtAddress, 2);
+            this.tblLayout.SetColumnSpan(this.btnSave, 2);
+            this.tblLayout.Location = new Point(0, 0);
+            this.tblLayout.Name = "tblLayout";
+            this.tblLayout.TabIndex = 0;
+            //
+            // lblTitle
+            //
+            this.lblTitle.AutoSize = false;
+            this.lblTitle.Dock = DockStyle.Fill;
+            this.lblTitle.TypeRole = MaterialComponents.LMaterialTypeRole.HeadlineSmall;
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Text = "Patient Registration";
+            this.lblTitle.TextAlign = ContentAlignment.MiddleLeft;
+            //
             // txtFirstName
-            // 
-            txtFirstName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lMaterialTableLayoutPanel1.SetColumnSpan(txtFirstName, 4);
-            txtFirstName.LabelText = "First Name";
-            txtFirstName.Location = new Point(19, 124);
-            txtFirstName.Margin = new Padding(3, 16, 3, 8);
-            txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(1233, 70);
-            txtFirstName.TabIndex = 15;
-            // 
-            // txtContact
-            // 
-            txtContact.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lMaterialTableLayoutPanel1.SetColumnSpan(txtContact, 4);
-            txtContact.LabelText = "Contact Number";
-            txtContact.Location = new Point(19, 340);
-            txtContact.Margin = new Padding(3, 16, 3, 8);
-            txtContact.Name = "txtContact";
-            txtContact.Size = new Size(1233, 65);
-            txtContact.TabIndex = 18;
-            // 
+            //
+            this.txtFirstName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            this.txtFirstName.LabelText = "First Name";
+            this.txtFirstName.Margin = new Padding(0, 3, 8, 3);
+            this.txtFirstName.MaxLength = 100;
+            this.txtFirstName.Name = "txtFirstName";
+            this.txtFirstName.Size = new Size(300, 84);
+            this.txtFirstName.TabIndex = 1;
+            //
             // txtLastName
-            // 
-            txtLastName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lMaterialTableLayoutPanel1.SetColumnSpan(txtLastName, 4);
-            txtLastName.LabelText = "Last Name";
-            txtLastName.Location = new Point(19, 200);
-            txtLastName.Margin = new Padding(3, 16, 3, 8);
-            txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(1233, 65);
-            txtLastName.TabIndex = 16;
-            // 
-            // lMaterialTableLayoutPanel1
-            // 
-            lMaterialTableLayoutPanel1.BackColor = Color.FromArgb(255, 248, 245);
-            lMaterialTableLayoutPanel1.ColumnCount = 4;
-            lMaterialTableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            lMaterialTableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            lMaterialTableLayoutPanel1.ColumnStyles.Add(new ColumnStyle());
-            lMaterialTableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            lMaterialTableLayoutPanel1.Controls.Add(txtLastName, 0, 2);
-            lMaterialTableLayoutPanel1.Controls.Add(txtContact, 0, 5);
-            lMaterialTableLayoutPanel1.Controls.Add(txtFirstName, 0, 1);
-            lMaterialTableLayoutPanel1.Controls.Add(txtAge, 0, 4);
-            lMaterialTableLayoutPanel1.Controls.Add(txtAddress, 0, 6);
-            lMaterialTableLayoutPanel1.Controls.Add(rdoMale, 2, 4);
-            lMaterialTableLayoutPanel1.Controls.Add(rdoFemale, 3, 4);
-            lMaterialTableLayoutPanel1.Controls.Add(lMaterialButton1, 0, 7);
-            lMaterialTableLayoutPanel1.Controls.Add(lMaterialLabel1, 0, 0);
-            lMaterialTableLayoutPanel1.Dock = DockStyle.Fill;
-            lMaterialTableLayoutPanel1.ForeColor = Color.FromArgb(34, 26, 21);
-            lMaterialTableLayoutPanel1.Location = new Point(0, 0);
-            lMaterialTableLayoutPanel1.Name = "lMaterialTableLayoutPanel1";
-            lMaterialTableLayoutPanel1.Padding = new Padding(16, 8, 16, 16);
-            lMaterialTableLayoutPanel1.RowCount = 9;
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 94F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 89F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 114F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 90F));
-            lMaterialTableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            lMaterialTableLayoutPanel1.Size = new Size(1335, 767);
-            lMaterialTableLayoutPanel1.TabIndex = 22;
-            lMaterialTableLayoutPanel1.Paint += lMaterialTableLayoutPanel1_Paint;
-            // 
+            //
+            this.txtLastName.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            this.txtLastName.LabelText = "Last Name";
+            this.txtLastName.Margin = new Padding(8, 3, 0, 3);
+            this.txtLastName.MaxLength = 100;
+            this.txtLastName.Name = "txtLastName";
+            this.txtLastName.Size = new Size(300, 84);
+            this.txtLastName.TabIndex = 2;
+            //
+            // dtpDob
+            //
+            this.dtpDob.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            this.dtpDob.Format = DateTimePickerFormat.Short;
+            this.dtpDob.LabelText = "Date of Birth";
+            this.dtpDob.Margin = new Padding(0, 3, 0, 3);
+            this.dtpDob.Name = "dtpDob";
+            this.dtpDob.Size = new Size(600, 84);
+            this.dtpDob.TabIndex = 3;
+            //
+            // pnlGender
+            //
+            this.pnlGender.Controls.Add(this.lblGender);
+            this.pnlGender.Controls.Add(this.rdoMale);
+            this.pnlGender.Controls.Add(this.rdoFemale);
+            this.pnlGender.Controls.Add(this.rdoOther);
+            this.pnlGender.Dock = DockStyle.Fill;
+            this.pnlGender.Margin = new Padding(0);
+            this.pnlGender.Name = "pnlGender";
+            this.pnlGender.TabIndex = 4;
+            this.pnlGender.WrapContents = false;
+            //
+            // lblGender
+            //
+            this.lblGender.Anchor = AnchorStyles.Left;
+            this.lblGender.AutoSize = true;
+            this.lblGender.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
+            this.lblGender.Margin = new Padding(3, 20, 16, 3);
+            this.lblGender.Name = "lblGender";
+            this.lblGender.Text = "Gender";
+            //
+            // rdoMale
+            //
+            this.rdoMale.AutoSize = true;
+            this.rdoMale.Margin = new Padding(3, 16, 16, 3);
+            this.rdoMale.Name = "rdoMale";
+            this.rdoMale.TabIndex = 5;
+            this.rdoMale.Text = "Male";
+            //
+            // rdoFemale
+            //
+            this.rdoFemale.AutoSize = true;
+            this.rdoFemale.Margin = new Padding(3, 16, 16, 3);
+            this.rdoFemale.Name = "rdoFemale";
+            this.rdoFemale.TabIndex = 6;
+            this.rdoFemale.Text = "Female";
+            //
+            // rdoOther
+            //
+            this.rdoOther.AutoSize = true;
+            this.rdoOther.Margin = new Padding(3, 16, 16, 3);
+            this.rdoOther.Name = "rdoOther";
+            this.rdoOther.TabIndex = 7;
+            this.rdoOther.Text = "Other";
+            //
+            // txtContact
+            //
+            this.txtContact.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            this.txtContact.LabelText = "Contact Number";
+            this.txtContact.Margin = new Padding(0, 3, 0, 3);
+            this.txtContact.MaxLength = 30;
+            this.txtContact.Name = "txtContact";
+            this.txtContact.Size = new Size(600, 84);
+            this.txtContact.TabIndex = 8;
+            //
             // txtAddress
-            // 
-            txtAddress.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            lMaterialTableLayoutPanel1.SetColumnSpan(txtAddress, 4);
-            txtAddress.LabelText = "Address";
-            txtAddress.Location = new Point(19, 420);
-            txtAddress.Margin = new Padding(3, 16, 3, 8);
-            txtAddress.Name = "txtAddress";
-            txtAddress.Size = new Size(1233, 90);
-            txtAddress.TabIndex = 19;
-            // 
-            // lMaterialButton1
-            // 
-            lMaterialTableLayoutPanel1.SetColumnSpan(lMaterialButton1, 4);
-            lMaterialButton1.Dock = DockStyle.Fill;
-            lMaterialButton1.FlatAppearance.BorderSize = 0;
-            lMaterialButton1.FlatStyle = FlatStyle.Flat;
-            lMaterialButton1.Font = new Font("Segoe UI Semibold", 10.5F);
-            lMaterialButton1.Location = new Point(219, 508);
-            lMaterialButton1.Margin = new Padding(200, 10, 200, 10);
-            lMaterialButton1.Name = "lMaterialButton1";
-            lMaterialButton1.Size = new Size(833, 80);
-            lMaterialButton1.TabIndex = 14;
-            lMaterialButton1.Text = "Save";
-            lMaterialButton1.UseVisualStyleBackColor = true;
-            lMaterialButton1.Click += lMaterialButton1_Click;
-            // 
+            //
+            this.txtAddress.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            this.txtAddress.LabelText = "Address";
+            this.txtAddress.Margin = new Padding(0, 3, 0, 3);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new Size(600, 120);
+            this.txtAddress.TabIndex = 9;
+            //
+            // btnSave
+            //
+            this.btnSave.Anchor = AnchorStyles.Right;
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new Size(160, 40);
+            this.btnSave.TabIndex = 10;
+            this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            //
             // Registration
-            // 
-            AutoScaleDimensions = new SizeF(9F, 23F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1335, 767);
-            Controls.Add(lMaterialTableLayoutPanel1);
-            MinimumSize = new Size(900, 700);
-            Name = "Registration";
-            Text = "Patient Registration";
-            lMaterialTableLayoutPanel1.ResumeLayout(false);
-            lMaterialTableLayoutPanel1.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            //
+            this.AutoScaleDimensions = new SizeF(8F, 19F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+            this.ClientSize = new Size(720, 640);
+            this.Controls.Add(this.tblLayout);
+            this.MinimumSize = new Size(640, 620);
+            this.Name = "Registration";
+            this.Text = "Patient Registration";
+            this.tblLayout.ResumeLayout(false);
+            this.tblLayout.PerformLayout();
+            this.pnlGender.ResumeLayout(false);
+            this.pnlGender.PerformLayout();
+            this.ResumeLayout(false);
         }
 
         #endregion
-        private MaterialComponents.LMaterialLabel lMaterialLabel1;
-        private MaterialComponents.LMaterialTableLayoutPanel lMaterialTableLayoutPanel1;
-        private MaterialComponents.LMaterialTextBox txtLastName;
-        private MaterialComponents.LMaterialTextBox txtContact;
+
+        private MaterialComponents.LMaterialTableLayoutPanel tblLayout;
+        private MaterialComponents.LMaterialLabel lblTitle;
         private MaterialComponents.LMaterialTextBox txtFirstName;
+        private MaterialComponents.LMaterialTextBox txtLastName;
+        private MaterialComponents.LMaterialDateTimePicker dtpDob;
+        private MaterialComponents.LMaterialFlowLayoutPanel pnlGender;
+        private MaterialComponents.LMaterialLabel lblGender;
         private MaterialComponents.LMaterialRadioButton rdoMale;
         private MaterialComponents.LMaterialRadioButton rdoFemale;
-        private MaterialComponents.LMaterialTextBox txtAge;
+        private MaterialComponents.LMaterialRadioButton rdoOther;
+        private MaterialComponents.LMaterialTextBox txtContact;
         private MaterialComponents.LMaterialTextBox txtAddress;
-        private MaterialComponents.LMaterialButton lMaterialButton1;
+        private MaterialComponents.LMaterialButton btnSave;
     }
 }

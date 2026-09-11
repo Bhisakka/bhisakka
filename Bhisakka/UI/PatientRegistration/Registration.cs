@@ -1,14 +1,7 @@
-﻿using Bhisakka.DataAccess;
+using Bhisakka.DataAccess;
 using Bhisakka.Models;
 using MaterialComponents;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Bhisakka.UI.PatientRegistration
@@ -18,55 +11,96 @@ namespace Bhisakka.UI.PatientRegistration
         public Registration()
         {
             InitializeComponent();
+
+            dtpDob.InnerDateTimePicker.MinDate = DateTime.Today.AddYears(-120);
+            dtpDob.InnerDateTimePicker.MaxDate = DateTime.Today;
+            dtpDob.Value = DateTime.Today;
         }
 
-        private void lMaterialButton1_Click(object sender, EventArgs e)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtAge.Text, out int age)) 
+            string firstName = txtFirstName.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
+            string contact = txtContact.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(firstName) ||
+                string.IsNullOrWhiteSpace(lastName) ||
+                string.IsNullOrWhiteSpace(contact))
             {
-                LMaterialDialog.Show(this, "Invalid Age", "Age must be a number!");
+                LMaterialDialog.Show(this, "Missing Information",
+                    "Please fill in the first name, last name and contact number.");
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text) ||
-                string.IsNullOrWhiteSpace(txtLastName.Text) ||
-                string.IsNullOrWhiteSpace(txtContact.Text))
+            string gender;
+            if (rdoMale.Checked)
             {
-                //MessageBox.Show("Please fill in all required fields!");
-                LMaterialDialog.Show(this, "No Empty fields allowed", "Please fill in all required fields!");
+                gender = "Male";
+            }
+            else if (rdoFemale.Checked)
+            {
+                gender = "Female";
+            }
+            else if (rdoOther.Checked)
+            {
+                gender = "Other";
+            }
+            else
+            {
+                gender = "";
+            }
 
-                
+            if (gender.Length == 0)
+            {
+                LMaterialDialog.Show(this, "No Gender Selected", "Please select a gender.");
                 return;
             }
 
-            string gender = rdoMale.Checked ? "Male" : (rdoFemale.Checked ? "Female" : "");
-
-            if (string.IsNullOrEmpty(gender))
+            DateTime dateOfBirth = dtpDob.Value.Date;
+            if (dateOfBirth > DateTime.Today)
             {
-                LMaterialDialog.Show(this, "No Gender selected", "Please select a gender!");
+                LMaterialDialog.Show(this, "Invalid Date of Birth", "Date of birth cannot be in the future.");
                 return;
             }
 
             Patient patient = new Patient(
                 0,
-                txtFirstName.Text.Trim(),
-                txtLastName.Text.Trim(),
-                DateTime.Today.AddYears(-age),
+                firstName,
+                lastName,
+                dateOfBirth,
                 gender,
-                txtContact.Text.Trim(),
-                txtAddress.Text.Trim()
-            );
+                contact,
+                txtAddress.Text.Trim());
 
-            var repository = new PatientRepository();
-            repository.InsertPatient(patient);
+            try
+            {
+                PatientRepository repository = new PatientRepository();
+                repository.InsertPatient(patient);
+            }
+            catch (Exception ex)
+            {
+                LMaterialDialog.Show(this, "Registration Failed",
+                    "The patient could not be registered: " + ex.Message);
+                return;
+            }
 
-            LMaterialDialog.Show(this, "Registration Successful", "Patient " + patient.GetFirstName() + " " + patient.GetLastName() + " has been registered.");
+            LMaterialDialog.Show(this, "Registration Successful",
+                "Patient " + patient.GetFirstName() + " " + patient.GetLastName() + " has been registered.");
+
+            ClearForm();
         }
 
-        private void lMaterialTableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void ClearForm()
         {
-
+            txtFirstName.Text = "";
+            txtLastName.Text = "";
+            txtContact.Text = "";
+            txtAddress.Text = "";
+            rdoMale.Checked = false;
+            rdoFemale.Checked = false;
+            rdoOther.Checked = false;
+            dtpDob.Value = DateTime.Today;
+            txtFirstName.FocusInner();
         }
     }
 }
-

@@ -1,19 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace Bhisakka.Models
 {
     internal class AudioLogs
     {
-        public int audioLogId { get; set; }
-        public int consultationId { get; set; }
-        public string filePath { get; set; }
-        public DateTime startedAt { get; set; }
-        public int durationSeconds { get; set; }
+        private int audioLogId;
+        private int consultationId;
+        private string filePath;
+        private DateTime startedAt;
+        private int durationSeconds;
 
+        public AudioLogs(int consultationId, string filePath, DateTime startedAt, int durationSeconds)
+        {
+            this.consultationId = consultationId;
+            this.filePath = filePath;
+            this.startedAt = startedAt;
+            this.durationSeconds = durationSeconds;
+        }
 
+        public int GetAudioLogId()
+        {
+            return audioLogId;
+        }
+
+        public void SetAudioLogId(int value)
+        {
+            audioLogId = value;
+        }
+
+        public int GetConsultationId()
+        {
+            return consultationId;
+        }
+
+        public void SetConsultationId(int value)
+        {
+            consultationId = value;
+        }
+
+        public string GetFilePath()
+        {
+            return filePath;
+        }
+
+        public void SetFilePath(string value)
+        {
+            filePath = value;
+        }
+
+        public DateTime GetStartedAt()
+        {
+            return startedAt;
+        }
+
+        public void SetStartedAt(DateTime value)
+        {
+            startedAt = value;
+        }
+
+        public int GetDurationSeconds()
+        {
+            return durationSeconds;
+        }
+
+        public void SetDurationSeconds(int value)
+        {
+            durationSeconds = value;
+        }
     }
 }

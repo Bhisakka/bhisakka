@@ -106,6 +106,11 @@ namespace Bhisakka.Util
                     _openForms.Remove(formType);
                 }
             }
+
+            if (_openForms.Count == 0)
+            {
+                Application.Exit();
+            }
         }
     }
 }
