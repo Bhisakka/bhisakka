@@ -22,6 +22,7 @@ namespace Bhisakka.UI.AuthN
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignIn));
             this.pnlCard = new MaterialComponents.LMaterialCard();
             this.LblTitle = new MaterialComponents.LMaterialLabel();
             this.TxtUsername = new MaterialComponents.LMaterialTextBox();
@@ -29,22 +30,27 @@ namespace Bhisakka.UI.AuthN
             this.TxtSubmit = new MaterialComponents.LMaterialButton();
             this.pnlCard.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // pnlCard
-            //
+            // 
             this.pnlCard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pnlCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(234)))));
             this.pnlCard.Controls.Add(this.LblTitle);
             this.pnlCard.Controls.Add(this.TxtUsername);
             this.pnlCard.Controls.Add(this.TxtPassword);
             this.pnlCard.Controls.Add(this.TxtSubmit);
+            this.pnlCard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
             this.pnlCard.Location = new System.Drawing.Point(120, 44);
             this.pnlCard.Name = "pnlCard";
+            this.pnlCard.Padding = new System.Windows.Forms.Padding(16);
             this.pnlCard.Size = new System.Drawing.Size(360, 360);
             this.pnlCard.TabIndex = 0;
-            //
+            // 
             // LblTitle
-            //
+            // 
             this.LblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.LblTitle.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.LblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
             this.LblTitle.Location = new System.Drawing.Point(24, 28);
             this.LblTitle.Name = "LblTitle";
             this.LblTitle.Size = new System.Drawing.Size(312, 44);
@@ -52,9 +58,9 @@ namespace Bhisakka.UI.AuthN
             this.LblTitle.Text = "Sign In";
             this.LblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.LblTitle.TypeRole = MaterialComponents.LMaterialTypeRole.HeadlineSmall;
-            //
+            // 
             // TxtUsername
-            //
+            // 
             this.TxtUsername.LabelText = "Username";
             this.TxtUsername.Location = new System.Drawing.Point(24, 84);
             this.TxtUsername.MaxLength = 100;
@@ -62,9 +68,9 @@ namespace Bhisakka.UI.AuthN
             this.TxtUsername.Size = new System.Drawing.Size(312, 84);
             this.TxtUsername.TabIndex = 1;
             this.TxtUsername.TextChanged += new System.EventHandler(this.TxtUsername_TextChanged);
-            //
+            // 
             // TxtPassword
-            //
+            // 
             this.TxtPassword.LabelText = "Password";
             this.TxtPassword.Location = new System.Drawing.Point(24, 174);
             this.TxtPassword.MaxLength = 32;
@@ -73,23 +79,26 @@ namespace Bhisakka.UI.AuthN
             this.TxtPassword.TabIndex = 2;
             this.TxtPassword.UseSystemPasswordChar = true;
             this.TxtPassword.TextChanged += new System.EventHandler(this.TxtPassword_TextChanged);
-            //
+            // 
             // TxtSubmit
-            //
+            // 
+            this.TxtSubmit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TxtSubmit.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
             this.TxtSubmit.Location = new System.Drawing.Point(24, 280);
             this.TxtSubmit.Name = "TxtSubmit";
             this.TxtSubmit.Size = new System.Drawing.Size(312, 44);
             this.TxtSubmit.TabIndex = 3;
             this.TxtSubmit.Text = "Sign In";
             this.TxtSubmit.Click += new System.EventHandler(this.TxtSubmit_Click);
-            //
+            // 
             // SignIn
-            //
+            // 
             this.AcceptButton = this.TxtSubmit;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 448);
             this.Controls.Add(this.pnlCard);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(616, 487);
             this.Name = "SignIn";
             this.Text = "Bhisakka - Sign In";
