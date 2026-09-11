@@ -12,10 +12,13 @@ namespace Bhisakka
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var mainForm = new UI.ConsultationForm();
-            WindowManager.GetInstance().RegisterForm(mainForm);
+            Audio.AmbianceService.Initialize();
 
-            Application.Run(mainForm);
+            var signInForm = new UI.AuthN.SignIn();
+            WindowManager.GetInstance().RegisterForm(signInForm);
+            signInForm.Show();
+
+            Application.Run();
         }
     }
 }

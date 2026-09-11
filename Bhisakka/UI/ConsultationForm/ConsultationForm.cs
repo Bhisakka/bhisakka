@@ -1,94 +1,308 @@
-﻿using Bhisakka;
+using Bhisakka.DataAccess;
+using Bhisakka.Models;
+using Bhisakka.Services;
+using MaterialComponents;
 using NAudio.Wave;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Speech.Synthesis;
 using System.Windows.Forms;
-using Bhisakka.DataAccess;
-using Bhisakka.Models;
 
 namespace Bhisakka.UI
 {
-    public partial class ConsultationForm : MaterialComponents.LMaterialForm
+    public partial class ConsultationForm : LMaterialForm
     {
-        public string FormName { get; set; }
-        public string FormDescription { get; set; } = "Consulation Workspace";
-        public string ConsultantName { get; set; }
-        public string ConsultantSpecialty { get; set; }
+        private readonly QueueManager queueManager;
+        private readonly List<PrescriptionItem> pendingPrescriptionItems;
+        private readonly Timer refreshTimer;
 
-        // Microphone UI + recording fields
-        //private MaterialComponents.LMaterialComboBox comboMicrophones;
-        //private MaterialComponents.LMaterialButton btnRecord;
-        //private MaterialComponents.LMaterialButton btnStop;
+        private int? currentAppointmentId;
+        private int? currentConsultationId;
+
         private WaveInEvent waveIn;
         private WaveFileWriter waveWriter;
         private string outputFilePath;
-        // Volume level update throttle
-        private DateTime _lastLevelUpdate = DateTime.MinValue;
-        private readonly int _levelUpdateIntervalMs = 50; // update progress bar at most ~20Hz
-        private DateTime? recordingStartedAt = null;
+        private DateTime? recordingStartedAt;
+        private int recordProgress;
 
+        private SpeechSynthesizer speechSynth;
 
         public ConsultationForm()
         {
             InitializeComponent();
-            InitializeMicrophoneControls();
+
+            queueManager = new QueueManager();
+            pendingPrescriptionItems = new List<PrescriptionItem>();
+
+            refreshTimer = new Timer();
+            refreshTimer.Interval = 5000;
+            refreshTimer.Tick += RefreshTimer_Tick;
+
+            try
+            {
+                speechSynth = new SpeechSynthesizer();
+                speechSynth.SetOutputToDefaultAudioDevice();
+            }
+            catch
+            {
+                // No speech engine/voice available: announcements are skipped silently.
+                speechSynth = null;
+            }
+        }
+
+        private void AnnounceNextPatient(QueueEntry entry)
+        {
+            if (speechSynth == null || entry == null)
+            {
+                return;
+            }
+
+            try
+            {
+                speechSynth.SpeakAsyncCancelAll();
+                speechSynth.SpeakAsync(
+                    "Next patient, please proceed to the consultation room. Now serving number " +
+                    entry.GetQueueNumber() + ", " + entry.GetPatientName() + ".");
+            }
+            catch
+            {
+                // ignore failures
+            }
         }
 
         private void ConsultationForm_Load(object sender, EventArgs e)
         {
-            if (FormDescription == null || FormDescription == string.Empty)
-            {
-                FormDescription = "Consultation Workspace";
-            }
-            this.Text = FormDescription;
             LoadMicrophoneDevices();
+            LoadMedicines();
+            RefreshCheckInList();
+            RefreshQueueList();
+
+            refreshTimer.Start();
         }
 
-        private void lMaterialLabel1_Click(object sender, EventArgs e)
+        private void ConsultationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (currentConsultationId != null)
+            {
+                DialogResult choice = LMaterialDialog.Show(this, "Consultation In Progress",
+                    "This consultation has not been saved. If you close now it stays In Progress in " +
+                    "the queue and you can resume it later by selecting the patient and clicking Call Next.\r\n\r\n" +
+                    "Close without saving?",
+                    "Close", "Stay");
 
+                if (choice != DialogResult.OK)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+
+            refreshTimer.Stop();
+
+            try
+            {
+                if (waveIn != null)
+                {
+                    waveIn.StopRecording();
+                }
+            }
+            catch { }
+
+            CleanupRecording();
+
+            try
+            {
+                if (speechSynth != null)
+                {
+                    speechSynth.SpeakAsyncCancelAll();
+                    speechSynth.Dispose();
+                    speechSynth = null;
+                }
+            }
+            catch { }
         }
 
-        private void InitializeMicrophoneControls()
+        private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            // ComboBox to list devices
-            //comboMicrophones = new MaterialComponents.LMaterialComboBox
-            //{
-            //    DropDownStyle = ComboBoxStyle.DropDownList,
-            //    Location = new Point(350, 48),
-            //    Width = 360
-            //};
-            //this.Controls.Add(comboMicrophones);
-
-            //// Record button
-            //btnRecord = new MaterialComponents.LMaterialButton
-            //{
-            //    Text = "Record",
-            //    Location = new Point(comboMicrophones.Right + 8, comboMicrophones.Top),
-            //    AutoSize = true
-            //};
-            //btnRecord.Click += BtnRecord_Click;
-            //this.Controls.Add(btnRecord);
-
-            //// Stop button
-            //btnStop = new  MaterialComponents.LMaterialButton
-            //{
-            //    Text = "Stop",
-            //    Location = new Point(btnRecord.Right + 8, comboMicrophones.Top),
-            //    AutoSize = true,
-            //    Enabled = false
-            //};
-            //btnStop.Click += BtnStop_Click;
-            //this.Controls.Add(btnStop);
+            RefreshCheckInList();
+            RefreshQueueList();
         }
+
+        private void RefreshCheckInList()
+        {
+            int selectedIndex = lstCheckIn.SelectedIndex;
+
+            lstCheckIn.Items.Clear();
+            foreach (CheckInEntry entry in queueManager.GetScheduledForToday())
+            {
+                lstCheckIn.Items.Add(entry);
+            }
+
+            if (selectedIndex >= 0 && selectedIndex < lstCheckIn.Items.Count)
+            {
+                lstCheckIn.SelectedIndex = selectedIndex;
+            }
+        }
+
+        private void RefreshQueueList()
+        {
+            int selectedIndex = lstQueue.SelectedIndex;
+
+            lstQueue.Items.Clear();
+            foreach (QueueEntry entry in queueManager.GetLiveQueue())
+            {
+                lstQueue.Items.Add(entry);
+            }
+
+            if (selectedIndex >= 0 && selectedIndex < lstQueue.Items.Count)
+            {
+                lstQueue.SelectedIndex = selectedIndex;
+            }
+        }
+
+        private void LoadMedicines()
+        {
+            cboMedicine.Items.Clear();
+            foreach (MedicineOption option in queueManager.GetActiveMedicines())
+            {
+                cboMedicine.Items.Add(option);
+            }
+
+            if (cboMedicine.Items.Count > 0)
+            {
+                cboMedicine.SelectedIndex = 0;
+            }
+        }
+
+        private void BtnCheckIn_Click(object sender, EventArgs e)
+        {
+            CheckInEntry selected = lstCheckIn.SelectedItem as CheckInEntry;
+
+            if (selected == null)
+            {
+                LMaterialDialog.Show(this, "No Selection", "Select a patient from today's schedule to check in.");
+                return;
+            }
+
+            queueManager.CheckIn(selected.GetAppointmentId());
+            RefreshCheckInList();
+            RefreshQueueList();
+        }
+
+        private void BtnCallNext_Click(object sender, EventArgs e)
+        {
+            if (currentConsultationId != null)
+            {
+                LMaterialDialog.Show(this, "Consultation In Progress", "Save or complete the current consultation before calling the next patient.");
+                return;
+            }
+
+            QueueEntry selected = lstQueue.SelectedItem as QueueEntry;
+
+            if (selected == null)
+            {
+                LMaterialDialog.Show(this, "No Selection", "Select a waiting patient from the live queue.");
+                return;
+            }
+
+            int doctorId = GlobalSession.GetCurrentUser().GetUserID();
+
+            int consultationId = queueManager.CallNext(selected.GetAppointmentId(), selected.GetPatientId(), doctorId, 0);
+
+            currentAppointmentId = selected.GetAppointmentId();
+            currentConsultationId = consultationId;
+
+            lmtPatientName.Text = selected.GetPatientName();
+            lmtConsultationID.Text = consultationId.ToString();
+
+            txtDiagnosis.Text = string.Empty;
+            rtxtNotes.Text = string.Empty;
+            numFee.Value = 0;
+            pendingPrescriptionItems.Clear();
+            lstPrescriptionItems.Items.Clear();
+
+            RefreshQueueList();
+
+            AnnounceNextPatient(selected);
+        }
+
+        private void BtnAddItem_Click(object sender, EventArgs e)
+        {
+            MedicineOption selected = cboMedicine.SelectedItem as MedicineOption;
+
+            if (selected == null)
+            {
+                LMaterialDialog.Show(this, "No Medicine Selected", "Choose a medicine to prescribe.");
+                return;
+            }
+
+            PrescriptionItem item = new PrescriptionItem(
+                selected.GetMedicineId(),
+                selected.GetName(),
+                (int)numQuantity.Value,
+                txtDosage.Text.Trim());
+
+            pendingPrescriptionItems.Add(item);
+            lstPrescriptionItems.Items.Add(item);
+            txtDosage.Text = string.Empty;
+        }
+
+        private void BtnSaveConsultation_Click(object sender, EventArgs e)
+        {
+            if (currentConsultationId == null || currentAppointmentId == null)
+            {
+                LMaterialDialog.Show(this, "No Active Consultation", "Call a patient from the queue before saving.");
+                return;
+            }
+
+            if (waveIn != null)
+            {
+                LMaterialDialog.Show(this, "Recording In Progress", "Stop the audio recording before saving the consultation.");
+                return;
+            }
+
+            queueManager.CompleteConsultation(
+                currentConsultationId.Value,
+                currentAppointmentId.Value,
+                txtDiagnosis.Text.Trim(),
+                rtxtNotes.Text.Trim(),
+                numFee.Value);
+
+            if (pendingPrescriptionItems.Count > 0)
+            {
+                int prescriptionId = queueManager.CreatePrescription(currentConsultationId.Value);
+
+                foreach (PrescriptionItem item in pendingPrescriptionItems)
+                {
+                    queueManager.AddPrescriptionItem(prescriptionId, item.GetMedicineId(), item.GetQuantity(), item.GetDosageInstructions());
+                }
+            }
+
+            if (lmtSave.Enabled && !string.IsNullOrEmpty(outputFilePath) && File.Exists(outputFilePath))
+            {
+                SaveRecordingToDatabase();
+            }
+
+            LMaterialDialog.Show(this, "Consultation Saved", "The consultation has been completed and saved.");
+
+            currentAppointmentId = null;
+            currentConsultationId = null;
+
+            lmtPatientName.Text = string.Empty;
+            lmtConsultationID.Text = string.Empty;
+            txtDiagnosis.Text = string.Empty;
+            rtxtNotes.Text = string.Empty;
+            numFee.Value = 0;
+            pendingPrescriptionItems.Clear();
+            lstPrescriptionItems.Items.Clear();
+
+            RefreshQueueList();
+        }
+
+        // ---------------------------------------------------------------
+        // Audio recording (Issue #2 — liability auditing)
+        // ---------------------------------------------------------------
 
         private void LoadMicrophoneDevices()
         {
@@ -99,7 +313,7 @@ namespace Bhisakka.UI
                 for (int i = 0; i < WaveIn.DeviceCount; i++)
                 {
                     var caps = WaveIn.GetCapabilities(i);
-                    comboMicrophones.Items.Add($"{i}: {caps.ProductName}");
+                    comboMicrophones.Items.Add(i + ": " + caps.ProductName);
                 }
 
                 if (comboMicrophones.Items.Count > 0)
@@ -115,31 +329,34 @@ namespace Bhisakka.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error enumerating audio devices: {ex.Message}", "Audio Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                comboMicrophones.Items.Add("Error enumerating devices");
-                comboMicrophones.SelectedIndex = 0;
+                LMaterialDialog.Show(this, "Audio Error", "Error enumerating audio devices: " + ex.Message);
                 btnRecord.Enabled = false;
             }
         }
 
         private void BtnRecord_Click(object sender, EventArgs e)
         {
+            if (currentConsultationId == null)
+            {
+                LMaterialDialog.Show(this, "No Active Consultation", "Call a patient from the queue before recording.");
+                return;
+            }
+
             if (comboMicrophones.SelectedIndex < 0)
             {
-                MessageBox.Show("Select a microphone device first.", "No Device", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LMaterialDialog.Show(this, "No Device", "Select a microphone device first.");
                 return;
             }
 
             try
             {
-                int deviceIndex = ParseSelectedDeviceIndex(comboMicrophones.SelectedItem?.ToString());
-                waveIn = new WaveInEvent
-                {
-                    DeviceNumber = deviceIndex,
-                    WaveFormat = new WaveFormat(44100, 1) // 44.1kHz mono
-                };
+                int deviceIndex = ParseSelectedDeviceIndex(comboMicrophones.SelectedItem.ToString());
 
-                outputFilePath = Path.Combine(Application.StartupPath, $"record_{DateTime.Now:yyyyMMdd_HHmmss}.wav");
+                waveIn = new WaveInEvent();
+                waveIn.DeviceNumber = deviceIndex;
+                waveIn.WaveFormat = new WaveFormat(44100, 1);
+
+                outputFilePath = Path.Combine(Application.StartupPath, "record_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".wav");
                 waveWriter = new WaveFileWriter(outputFilePath, waveIn.WaveFormat);
 
                 waveIn.DataAvailable += OnDataAvailable;
@@ -149,113 +366,19 @@ namespace Bhisakka.UI
 
                 btnRecord.Enabled = false;
                 btnStop.Enabled = true;
-                MessageBox.Show($"Recording started. File will be saved to:\n{outputFilePath}", "Recording", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lmtSave.Enabled = false;
                 lmtRecordStatus.Text = "Recording...";
                 recordingStartedAt = DateTime.Now;
+                recordProgress = 0;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to start recording: {ex.Message}", "Recording Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LMaterialDialog.Show(this, "Recording Error", "Failed to start recording: " + ex.Message);
                 CleanupRecording();
             }
         }
 
         private void BtnStop_Click(object sender, EventArgs e)
-        {
-            StopRecording();
-            lmtRecordStatus.Text += "Stopped.";
-        }
-
-        private void OnDataAvailable(object sender, WaveInEventArgs e)
-        {
-            try
-            {
-                this.Invoke(new Action(() =>
-                {
-                    lmtPgBar.Value = Math.Min(lmtPgBar.Value + e.BytesRecorded/4048, lmtPgBar.Maximum);
-                }));
-                waveWriter?.Write(e.Buffer, 0, e.BytesRecorded);
-                waveWriter?.Flush();
-                // Compute peak level for 16-bit PCM and update progress bar as percentage (0..100)
-                // Throttle UI updates to _levelUpdateIntervalMs to avoid flooding the UI thread.
-                if ((DateTime.UtcNow - _lastLevelUpdate).TotalMilliseconds < _levelUpdateIntervalMs)
-                    return;
-
-                _lastLevelUpdate = DateTime.UtcNow;
-
-                int bytesPerSample = waveIn.WaveFormat.BitsPerSample / 8;
-                int maxAbsolute = 0;
-
-                if (bytesPerSample == 2) // 16-bit PCM
-                {
-                    for (int index = 0; index < e.BytesRecorded; index += 2)
-                    {
-                        if (index + 1 >= e.BytesRecorded)
-                            break;
-                        short sample = (short)(e.Buffer[index] | (e.Buffer[index + 1] << 8));
-                        int abs = Math.Abs(sample);
-                        if (abs > maxAbsolute) maxAbsolute = abs;
-                    }
-
-                    int percent = (int)(maxAbsolute / 32767.0 * 100.0);
-                    percent = Math.Min(Math.Max(percent, 0), 100);
-
-                    // Update UI safely
-                    try
-                    {
-                        this.BeginInvoke(new Action(() =>
-                        {
-                            try
-                            {
-                                lmtPgBar.Value = percent;
-                            }
-                            catch
-                            {
-                                // ignore if progress bar not present or range mismatch
-                            }
-                        }));
-                    }
-                    catch
-                    {
-                        // BeginInvoke can throw if form is closing; ignore
-                    }
-                }
-                else
-                {
-                    // Other bit depths: fallback to zero or implement conversions if needed
-                }
-            }
-            catch
-            {
-                // swallow write/errors to keep recording stable
-            }
-
-
-        }
-            
-        
-
-        private void OnRecordingStopped(object sender, StoppedEventArgs e)
-        {
-            CleanupRecording();
-
-            if (e.Exception != null)
-            {
-                MessageBox.Show($"Recording stopped due to an error: {e.Exception.Message}", "Recording Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else
-            {
-                MessageBox.Show($"Recording saved to:\n{outputFilePath}", "Recording Stopped", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-
-            this.Invoke(new Action(() =>
-            {
-                btnRecord.Enabled = true;
-                btnStop.Enabled = false;
-            }));
-        }
-
-        private void StopRecording()
         {
             try
             {
@@ -266,8 +389,48 @@ namespace Bhisakka.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error stopping recording: {ex.Message}", "Stop Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LMaterialDialog.Show(this, "Stop Error", "Error stopping recording: " + ex.Message);
                 CleanupRecording();
+            }
+        }
+
+        private void OnDataAvailable(object sender, WaveInEventArgs e)
+        {
+            try
+            {
+                waveWriter.Write(e.Buffer, 0, e.BytesRecorded);
+                waveWriter.Flush();
+
+                recordProgress = (recordProgress + (e.BytesRecorded / 4048)) % 101;
+                int percent = recordProgress;
+
+                this.BeginInvoke(new Action(() =>
+                {
+                    lmtPgBar.Value = percent;
+                }));
+            }
+            catch
+            {
+                // ignore transient write errors while recording
+            }
+        }
+
+        private void OnRecordingStopped(object sender, StoppedEventArgs e)
+        {
+            CleanupRecording();
+
+            this.Invoke(new Action(() =>
+            {
+                btnRecord.Enabled = true;
+                btnStop.Enabled = false;
+                lmtSave.Enabled = true;
+                lmtPgBar.Value = 0;
+                lmtRecordStatus.Text = "Stopped. Ready to save.";
+            }));
+
+            if (e.Exception != null)
+            {
+                LMaterialDialog.Show(this, "Recording Error", "Recording stopped due to an error: " + e.Exception.Message);
             }
         }
 
@@ -283,62 +446,66 @@ namespace Bhisakka.UI
                     waveIn = null;
                 }
             }
-            catch { /* ignore */ }
+            catch { }
 
             try
             {
-                waveWriter?.Dispose();
-                waveWriter = null;
+                if (waveWriter != null)
+                {
+                    waveWriter.Dispose();
+                    waveWriter = null;
+                }
             }
-            catch { /* ignore */ }
+            catch { }
         }
 
         private int ParseSelectedDeviceIndex(string itemText)
         {
             if (string.IsNullOrEmpty(itemText))
+            {
                 return 0;
+            }
 
-            var parts = itemText.Split(':');
-            if (int.TryParse(parts[0], out int idx))
-                return idx;
+            string[] parts = itemText.Split(':');
+            int index;
+
+            if (int.TryParse(parts[0], out index))
+            {
+                return index;
+            }
 
             return 0;
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            // Ensure recording is stopped and resources freed
-            try
-            {
-                if (waveIn != null)
-                {
-                    waveIn.StopRecording();
-                }
-            }
-            catch { }
-
-            CleanupRecording();
-            base.OnFormClosing(e);          
-        }
-
-        private void btnRecord_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lmtSave_Click(object sender, EventArgs e)
+        private void LmtSave_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(outputFilePath) || !File.Exists(outputFilePath))
             {
-                MessageBox.Show("No recording available to save.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LMaterialDialog.Show(this, "Save", "No recording available to save.");
                 return;
             }
 
-            // TODO: obtain the actual consultation id from your form/context
-            int consultationId = 123;
+            if (currentConsultationId == null)
+            {
+                LMaterialDialog.Show(this, "No Active Consultation", "The consultation this recording belongs to is no longer active.");
+                return;
+            }
 
-            // Determine duration
+            if (SaveRecordingToDatabase())
+            {
+                LMaterialDialog.Show(this, "Saved", "Recording saved to database.");
+            }
+        }
+
+        private bool SaveRecordingToDatabase()
+        {
+            if (currentConsultationId == null || string.IsNullOrEmpty(outputFilePath) || !File.Exists(outputFilePath))
+            {
+                return false;
+            }
+
             double durationSeconds = 0;
+
             try
             {
                 using (var reader = new WaveFileReader(outputFilePath))
@@ -348,44 +515,26 @@ namespace Bhisakka.UI
             }
             catch
             {
-                // ignore - duration stays 0
+                // duration stays 0 if it can't be read
             }
 
             DateTime startedAt = recordingStartedAt ?? File.GetCreationTime(outputFilePath);
 
-            byte[] audioBytes;
             try
             {
-                audioBytes = File.ReadAllBytes(outputFilePath);
+                AudioLogs audioLog = new AudioLogs(currentConsultationId.Value, outputFilePath, startedAt, (int)durationSeconds);
+
+                AudioLogRepository repository = new AudioLogRepository();
+                repository.InsertAudioLog(audioLog);
+
+                lmtSave.Enabled = false;
+                return true;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Failed to read recording file: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            // Save to database
-            // CONSULTATION ID should be obtained from the context of the consultation form, here we use a placeholder value.
-            try
-            {
-                var audioLogs = new AudioLogs
-                {
-                    consultationId = consultationId,
-                    filePath = outputFilePath,
-                    startedAt = startedAt,
-                    durationSeconds = (int)durationSeconds
-                };
-
-                var repo = new AudioRecorder();
-                repo.InsertConsultation(audioLogs);
-
-                MessageBox.Show("Recording saved to database.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Database save failed: {ex.Message}", "Save Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LMaterialDialog.Show(this, "Save Error", "Database save failed: " + ex.Message);
+                return false;
             }
         }
     }
-
 }
-

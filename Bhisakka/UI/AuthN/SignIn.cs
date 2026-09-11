@@ -1,5 +1,6 @@
 ﻿using Bhisakka.Models;
 using Bhisakka.Services;
+using Bhisakka.Util;
 using MaterialComponents;
 using System;
 
@@ -40,23 +41,13 @@ namespace Bhisakka.UI.AuthN
 
                 if (CurrentUser != null)
                 {
-                    int RoleId = CurrentUser.GetUserRole().GetRoleId();
+                    GlobalSession.Login(CurrentUser);
 
-                    switch (RoleId)
-                    {
-                        case 1:
-                            // You are a Doctor
-                            break;
-                        case 2:
-                            // You are a Receptionist
-                            break;
-                        case 3:
-                            // You are a Pharmacist
-                            break;
-                        default:
-                            // Unknown role - database corrupted
-                            break;
-                    }
+                    TxtUsername.Text = string.Empty;
+                    TxtPassword.Text = string.Empty;
+
+                    WindowManager.GetInstance().Show<Dashboard.Dashboard>();
+                    this.Close();
                 }
                 else
                 {
