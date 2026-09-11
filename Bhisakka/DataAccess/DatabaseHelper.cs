@@ -1,5 +1,5 @@
-﻿using System;
-using System.Configuration;
+﻿using System.Configuration;
+using System.Security.Cryptography.X509Certificates;
 using Npgsql;
 
 namespace Bhisakka.DataAccess
@@ -11,6 +11,18 @@ namespace Bhisakka.DataAccess
         public static NpgsqlConnection GetConnection()
         {
             var connection = new NpgsqlConnection(ConnectionString);
+            
+            connection.ProvideClientCertificatesCallback += (certs) =>
+            {
+                X509Certificate2 cert = new X509Certificate2("client.pfx", "KusalDhananjaya");
+                certs.Add(cert);
+            };
+
+            connection.UserCertificateValidationCallback += (sender, cert, chain, errors) =>
+            {
+                return true;
+            };
+
             connection.Open();
             return connection;
         }
