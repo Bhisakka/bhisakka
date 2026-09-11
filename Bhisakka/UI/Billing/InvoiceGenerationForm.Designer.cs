@@ -28,8 +28,9 @@ namespace Bhisakka.UI.Billing
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InvoiceGenerationForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lMaterialCard1 = new MaterialComponents.LMaterialCard();
             this.lMaterialDivider2 = new MaterialComponents.LMaterialDivider();
@@ -85,9 +86,9 @@ namespace Bhisakka.UI.Billing
             ((System.ComponentModel.ISupportInitialize)(this.discountNumericUpDown)).BeginInit();
             this.revenuePanel.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // tableLayoutPanel1
-            //
+            // 
             this.tableLayoutPanel1.ColumnCount = 4;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.86761F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 47.49439F));
@@ -110,9 +111,9 @@ namespace Bhisakka.UI.Billing
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.49806F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1369, 574);
             this.tableLayoutPanel1.TabIndex = 3;
-            //
+            // 
             // lMaterialCard1
-            //
+            // 
             this.lMaterialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(234)))));
             this.lMaterialCard1.Controls.Add(this.lMaterialDivider2);
             this.lMaterialCard1.Controls.Add(this.consultationComboBox);
@@ -126,11 +127,11 @@ namespace Bhisakka.UI.Billing
             this.lMaterialCard1.Margin = new System.Windows.Forms.Padding(2);
             this.lMaterialCard1.Name = "lMaterialCard1";
             this.lMaterialCard1.Padding = new System.Windows.Forms.Padding(12, 13, 12, 13);
-            this.lMaterialCard1.Size = new System.Drawing.Size(630, 123);
+            this.lMaterialCard1.Size = new System.Drawing.Size(630, 113);
             this.lMaterialCard1.TabIndex = 6;
-            //
+            // 
             // lMaterialDivider2
-            //
+            // 
             this.lMaterialDivider2.Location = new System.Drawing.Point(10, 35);
             this.lMaterialDivider2.Margin = new System.Windows.Forms.Padding(2);
             this.lMaterialDivider2.Name = "lMaterialDivider2";
@@ -138,9 +139,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialDivider2.TabIndex = 8;
             this.lMaterialDivider2.TabStop = false;
             this.lMaterialDivider2.Text = "lMaterialDivider2";
-            //
+            // 
             // consultationComboBox
-            //
+            // 
             this.consultationComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(226)))));
             this.consultationComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.consultationComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -156,9 +157,9 @@ namespace Bhisakka.UI.Billing
             this.consultationComboBox.Size = new System.Drawing.Size(392, 42);
             this.consultationComboBox.TabIndex = 4;
             this.consultationComboBox.SelectedIndexChanged += new System.EventHandler(this.consultationComboBox_SelectedIndexChanged);
-            //
+            // 
             // lMaterialLabel3
-            //
+            // 
             this.lMaterialLabel3.AutoSize = true;
             this.lMaterialLabel3.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -169,9 +170,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel3.Size = new System.Drawing.Size(93, 15);
             this.lMaterialLabel3.TabIndex = 3;
             this.lMaterialLabel3.Text = "CONSULTATION";
-            //
+            // 
             // patientComboBox
-            //
+            // 
             this.patientComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(226)))));
             this.patientComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.patientComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -187,9 +188,9 @@ namespace Bhisakka.UI.Billing
             this.patientComboBox.Size = new System.Drawing.Size(198, 42);
             this.patientComboBox.TabIndex = 2;
             this.patientComboBox.SelectedIndexChanged += new System.EventHandler(this.patientComboBox_SelectedIndexChanged);
-            //
+            // 
             // lMaterialLabel2
-            //
+            // 
             this.lMaterialLabel2.AutoSize = true;
             this.lMaterialLabel2.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -200,9 +201,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel2.Size = new System.Drawing.Size(52, 15);
             this.lMaterialLabel2.TabIndex = 1;
             this.lMaterialLabel2.Text = "PATIENT";
-            //
+            // 
             // lMaterialLabel1
-            //
+            // 
             this.lMaterialLabel1.AutoSize = true;
             this.lMaterialLabel1.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel1.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -213,9 +214,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel1.Size = new System.Drawing.Size(188, 17);
             this.lMaterialLabel1.TabIndex = 0;
             this.lMaterialLabel1.Text = "Patient and consultation";
-            //
+            // 
             // panel1
-            //
+            // 
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(18, 18);
@@ -223,9 +224,9 @@ namespace Bhisakka.UI.Billing
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(269, 60);
             this.panel1.TabIndex = 5;
-            //
+            // 
             // label2
-            //
+            // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 41);
@@ -234,9 +235,9 @@ namespace Bhisakka.UI.Billing
             this.label2.Size = new System.Drawing.Size(248, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "Invoice generation and Billing";
-            //
+            // 
             // label1
-            //
+            // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkGreen;
@@ -246,23 +247,23 @@ namespace Bhisakka.UI.Billing
             this.label1.Size = new System.Drawing.Size(110, 29);
             this.label1.TabIndex = 2;
             this.label1.Text = "Bhisakka";
-            //
+            // 
             // lMaterialCard2
-            //
+            // 
             this.lMaterialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(234)))));
             this.lMaterialCard2.Controls.Add(this.panel4);
             this.lMaterialCard2.Controls.Add(this.lMaterialCard3);
             this.lMaterialCard2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lMaterialCard2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
-            this.lMaterialCard2.Location = new System.Drawing.Point(296, 210);
+            this.lMaterialCard2.Location = new System.Drawing.Point(296, 200);
             this.lMaterialCard2.Margin = new System.Windows.Forms.Padding(2);
             this.lMaterialCard2.Name = "lMaterialCard2";
             this.lMaterialCard2.Padding = new System.Windows.Forms.Padding(12, 13, 12, 13);
-            this.lMaterialCard2.Size = new System.Drawing.Size(630, 351);
+            this.lMaterialCard2.Size = new System.Drawing.Size(630, 324);
             this.lMaterialCard2.TabIndex = 7;
-            //
+            // 
             // panel4
-            //
+            // 
             this.panel4.Controls.Add(this.lMaterialLabel9);
             this.panel4.Controls.Add(this.qtyNumericUpDown);
             this.panel4.Controls.Add(this.lMaterialLabel7);
@@ -274,9 +275,9 @@ namespace Bhisakka.UI.Billing
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(605, 132);
             this.panel4.TabIndex = 11;
-            //
+            // 
             // lMaterialLabel9
-            //
+            // 
             this.lMaterialLabel9.AutoSize = true;
             this.lMaterialLabel9.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel9.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -287,17 +288,17 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel9.Size = new System.Drawing.Size(161, 17);
             this.lMaterialLabel9.TabIndex = 0;
             this.lMaterialLabel9.Text = "Dispensed medicines";
-            //
+            // 
             // qtyNumericUpDown
-            //
+            // 
             this.qtyNumericUpDown.Font = new System.Drawing.Font("Yu Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.qtyNumericUpDown.Location = new System.Drawing.Point(448, 79);
             this.qtyNumericUpDown.Name = "qtyNumericUpDown";
             this.qtyNumericUpDown.Size = new System.Drawing.Size(70, 42);
             this.qtyNumericUpDown.TabIndex = 9;
-            //
+            // 
             // lMaterialLabel7
-            //
+            // 
             this.lMaterialLabel7.AutoSize = true;
             this.lMaterialLabel7.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -308,9 +309,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel7.Size = new System.Drawing.Size(61, 15);
             this.lMaterialLabel7.TabIndex = 2;
             this.lMaterialLabel7.Text = "MEDICINE";
-            //
+            // 
             // lMaterialDivider1
-            //
+            // 
             this.lMaterialDivider1.Location = new System.Drawing.Point(8, 37);
             this.lMaterialDivider1.Margin = new System.Windows.Forms.Padding(2);
             this.lMaterialDivider1.Name = "lMaterialDivider1";
@@ -318,9 +319,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialDivider1.TabIndex = 7;
             this.lMaterialDivider1.TabStop = false;
             this.lMaterialDivider1.Text = "lMaterialDivider1";
-            //
+            // 
             // medicineComboBox
-            //
+            // 
             this.medicineComboBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(226)))));
             this.medicineComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.medicineComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -336,9 +337,9 @@ namespace Bhisakka.UI.Billing
             this.medicineComboBox.Size = new System.Drawing.Size(423, 42);
             this.medicineComboBox.TabIndex = 3;
             this.medicineComboBox.SelectedIndexChanged += new System.EventHandler(this.medicineComboBox_SelectedIndexChanged);
-            //
+            // 
             // addButton
-            //
+            // 
             this.addButton.CornerRadius = 6;
             this.addButton.FlatAppearance.BorderSize = 0;
             this.addButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -351,9 +352,9 @@ namespace Bhisakka.UI.Billing
             this.addButton.Text = "+ Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
-            //
+            // 
             // lMaterialLabel8
-            //
+            // 
             this.lMaterialLabel8.AutoSize = true;
             this.lMaterialLabel8.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -364,48 +365,48 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel8.Size = new System.Drawing.Size(29, 15);
             this.lMaterialLabel8.TabIndex = 4;
             this.lMaterialLabel8.Text = "QTY";
-            //
+            // 
             // lMaterialCard3
-            //
+            // 
             this.lMaterialCard3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(221)))), ((int)(((byte)(161)))));
             this.lMaterialCard3.Controls.Add(this.medicineDataGridView);
             this.lMaterialCard3.Controls.Add(this.lMaterialLabel10);
             this.lMaterialCard3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lMaterialCard3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
-            this.lMaterialCard3.Location = new System.Drawing.Point(12, 145);
+            this.lMaterialCard3.Location = new System.Drawing.Point(12, 118);
             this.lMaterialCard3.Margin = new System.Windows.Forms.Padding(2);
             this.lMaterialCard3.Name = "lMaterialCard3";
             this.lMaterialCard3.Padding = new System.Windows.Forms.Padding(12, 13, 12, 13);
             this.lMaterialCard3.Size = new System.Drawing.Size(606, 193);
             this.lMaterialCard3.TabIndex = 8;
-            //
+            // 
             // medicineDataGridView
-            //
+            // 
             this.medicineDataGridView.AllowUserToAddRows = false;
             this.medicineDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.medicineDataGridView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
             this.medicineDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.medicineDataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.medicineDataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.medicineDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.medicineDataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.medicineDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(219)))), ((int)(((byte)(200)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(65)))), ((int)(((byte)(49)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.medicineDataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(219)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(65)))), ((int)(((byte)(49)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.medicineDataGridView.DefaultCellStyle = dataGridViewCellStyle2;
             this.medicineDataGridView.EnableHeadersVisualStyles = false;
             this.medicineDataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(194)))), ((int)(((byte)(184)))));
             this.medicineDataGridView.Location = new System.Drawing.Point(14, 15);
@@ -417,9 +418,9 @@ namespace Bhisakka.UI.Billing
             this.medicineDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.medicineDataGridView.Size = new System.Drawing.Size(574, 162);
             this.medicineDataGridView.TabIndex = 1;
-            //
+            // 
             // lMaterialLabel10
-            //
+            // 
             this.lMaterialLabel10.AutoSize = true;
             this.lMaterialLabel10.BackColor = System.Drawing.Color.Transparent;
             this.lMaterialLabel10.Font = new System.Drawing.Font("Segoe UI", 10.5F);
@@ -430,9 +431,9 @@ namespace Bhisakka.UI.Billing
             this.lMaterialLabel10.TabIndex = 0;
             this.lMaterialLabel10.Text = "No medicines added yet. Select a patient above, then add items — or load a prescr" +
     "iption.";
-            //
+            // 
             // summaryCard
-            //
+            // 
             this.summaryCard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(234)))));
             this.summaryCard.Controls.Add(this.completePaymentButton);
             this.summaryCard.Controls.Add(this.removeSelectedButton);
@@ -457,11 +458,11 @@ namespace Bhisakka.UI.Billing
             this.summaryCard.Name = "summaryCard";
             this.summaryCard.Padding = new System.Windows.Forms.Padding(16);
             this.tableLayoutPanel1.SetRowSpan(this.summaryCard, 2);
-            this.summaryCard.Size = new System.Drawing.Size(275, 476);
+            this.summaryCard.Size = new System.Drawing.Size(275, 439);
             this.summaryCard.TabIndex = 8;
-            //
+            // 
             // completePaymentButton
-            //
+            // 
             this.completePaymentButton.FlatAppearance.BorderSize = 0;
             this.completePaymentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.completePaymentButton.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
@@ -472,9 +473,9 @@ namespace Bhisakka.UI.Billing
             this.completePaymentButton.Text = "Complete Payment";
             this.completePaymentButton.UseVisualStyleBackColor = true;
             this.completePaymentButton.Click += new System.EventHandler(this.completePaymentButton_Click);
-            //
+            // 
             // removeSelectedButton
-            //
+            // 
             this.removeSelectedButton.FlatAppearance.BorderSize = 0;
             this.removeSelectedButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.removeSelectedButton.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
@@ -486,9 +487,9 @@ namespace Bhisakka.UI.Billing
             this.removeSelectedButton.UseVisualStyleBackColor = true;
             this.removeSelectedButton.Variant = MaterialComponents.LMaterialButtonVariant.Outlined;
             this.removeSelectedButton.Click += new System.EventHandler(this.removeSelectedButton_Click);
-            //
+            // 
             // otherRadioButton
-            //
+            // 
             this.otherRadioButton.AutoSize = true;
             this.otherRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.otherRadioButton.Location = new System.Drawing.Point(168, 252);
@@ -497,9 +498,9 @@ namespace Bhisakka.UI.Billing
             this.otherRadioButton.TabIndex = 14;
             this.otherRadioButton.Text = "Other";
             this.otherRadioButton.UseVisualStyleBackColor = true;
-            //
+            // 
             // cardRadioButton
-            //
+            // 
             this.cardRadioButton.AutoSize = true;
             this.cardRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cardRadioButton.Location = new System.Drawing.Point(94, 252);
@@ -508,9 +509,9 @@ namespace Bhisakka.UI.Billing
             this.cardRadioButton.TabIndex = 13;
             this.cardRadioButton.Text = "Card";
             this.cardRadioButton.UseVisualStyleBackColor = true;
-            //
+            // 
             // cashRadioButton
-            //
+            // 
             this.cashRadioButton.AutoSize = true;
             this.cashRadioButton.Checked = true;
             this.cashRadioButton.Font = new System.Drawing.Font("Segoe UI", 12F);
@@ -522,9 +523,9 @@ namespace Bhisakka.UI.Billing
             this.cashRadioButton.Text = "Cash";
             this.cashRadioButton.UseVisualStyleBackColor = true;
             this.cashRadioButton.CheckedChanged += new System.EventHandler(this.cashRadioButton_CheckedChanged);
-            //
+            // 
             // paymentMethodCaptionLabel
-            //
+            // 
             this.paymentMethodCaptionLabel.AutoSize = true;
             this.paymentMethodCaptionLabel.BackColor = System.Drawing.Color.Transparent;
             this.paymentMethodCaptionLabel.Font = new System.Drawing.Font("Segoe UI Black", 9F);
@@ -534,9 +535,9 @@ namespace Bhisakka.UI.Billing
             this.paymentMethodCaptionLabel.Size = new System.Drawing.Size(110, 15);
             this.paymentMethodCaptionLabel.TabIndex = 11;
             this.paymentMethodCaptionLabel.Text = "Payment Method";
-            //
+            // 
             // grandTotalValueLabel
-            //
+            // 
             this.grandTotalValueLabel.AutoSize = true;
             this.grandTotalValueLabel.BackColor = System.Drawing.Color.Transparent;
             this.grandTotalValueLabel.Font = new System.Drawing.Font("Georgia", 13F, System.Drawing.FontStyle.Bold);
@@ -546,9 +547,9 @@ namespace Bhisakka.UI.Billing
             this.grandTotalValueLabel.Size = new System.Drawing.Size(89, 21);
             this.grandTotalValueLabel.TabIndex = 10;
             this.grandTotalValueLabel.Text = "Rs. 0.00";
-            //
+            // 
             // grandTotalCaptionLabel
-            //
+            // 
             this.grandTotalCaptionLabel.AutoSize = true;
             this.grandTotalCaptionLabel.BackColor = System.Drawing.Color.Transparent;
             this.grandTotalCaptionLabel.Font = new System.Drawing.Font("Segoe UI Black", 9F);
@@ -558,18 +559,18 @@ namespace Bhisakka.UI.Billing
             this.grandTotalCaptionLabel.Size = new System.Drawing.Size(79, 15);
             this.grandTotalCaptionLabel.TabIndex = 9;
             this.grandTotalCaptionLabel.Text = "Grand Total";
-            //
+            // 
             // lMaterialDivider3
-            //
+            // 
             this.lMaterialDivider3.Location = new System.Drawing.Point(19, 165);
             this.lMaterialDivider3.Name = "lMaterialDivider3";
             this.lMaterialDivider3.Size = new System.Drawing.Size(243, 26);
             this.lMaterialDivider3.TabIndex = 8;
             this.lMaterialDivider3.TabStop = false;
             this.lMaterialDivider3.Text = "lMaterialDivider3";
-            //
+            // 
             // discountNumericUpDown
-            //
+            // 
             this.discountNumericUpDown.DecimalPlaces = 2;
             this.discountNumericUpDown.Location = new System.Drawing.Point(193, 136);
             this.discountNumericUpDown.Maximum = new decimal(new int[] {
@@ -581,9 +582,9 @@ namespace Bhisakka.UI.Billing
             this.discountNumericUpDown.Size = new System.Drawing.Size(59, 20);
             this.discountNumericUpDown.TabIndex = 7;
             this.discountNumericUpDown.ValueChanged += new System.EventHandler(this.discountNumericUpDown_ValueChanged);
-            //
+            // 
             // discountCaptionLabel
-            //
+            // 
             this.discountCaptionLabel.AutoSize = true;
             this.discountCaptionLabel.BackColor = System.Drawing.Color.Transparent;
             this.discountCaptionLabel.Font = new System.Drawing.Font("Segoe UI Black", 9F);
@@ -593,9 +594,9 @@ namespace Bhisakka.UI.Billing
             this.discountCaptionLabel.Size = new System.Drawing.Size(92, 15);
             this.discountCaptionLabel.TabIndex = 6;
             this.discountCaptionLabel.Text = "Discount (Rs.)";
-            //
+            // 
             // subtotalValueLabel
-            //
+            // 
             this.subtotalValueLabel.AutoSize = true;
             this.subtotalValueLabel.BackColor = System.Drawing.Color.Transparent;
             this.subtotalValueLabel.Font = new System.Drawing.Font("Segoe UI", 13F);
@@ -605,21 +606,21 @@ namespace Bhisakka.UI.Billing
             this.subtotalValueLabel.Size = new System.Drawing.Size(74, 25);
             this.subtotalValueLabel.TabIndex = 5;
             this.subtotalValueLabel.Text = "Rs. 0.00";
-            //
+            // 
             // subtotalCaptionLabel
-            //
+            // 
             this.subtotalCaptionLabel.AutoSize = true;
             this.subtotalCaptionLabel.BackColor = System.Drawing.Color.Transparent;
             this.subtotalCaptionLabel.Font = new System.Drawing.Font("Segoe UI Black", 9F);
             this.subtotalCaptionLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
             this.subtotalCaptionLabel.Location = new System.Drawing.Point(20, 107);
             this.subtotalCaptionLabel.Name = "subtotalCaptionLabel";
-            this.subtotalCaptionLabel.Size = new System.Drawing.Size(130, 15);
+            this.subtotalCaptionLabel.Size = new System.Drawing.Size(124, 15);
             this.subtotalCaptionLabel.TabIndex = 4;
             this.subtotalCaptionLabel.Text = "Medicines Subtotal";
-            //
+            // 
             // consultationFeeValueLabel
-            //
+            // 
             this.consultationFeeValueLabel.AutoSize = true;
             this.consultationFeeValueLabel.BackColor = System.Drawing.Color.Transparent;
             this.consultationFeeValueLabel.Font = new System.Drawing.Font("Segoe UI", 13F);
@@ -630,9 +631,9 @@ namespace Bhisakka.UI.Billing
             this.consultationFeeValueLabel.TabIndex = 3;
             this.consultationFeeValueLabel.Text = "Rs. 0.00";
             this.consultationFeeValueLabel.Click += new System.EventHandler(this.consultationFeeValueLabel_Click);
-            //
+            // 
             // consultationFeeCaptionLable1
-            //
+            // 
             this.consultationFeeCaptionLable1.AutoSize = true;
             this.consultationFeeCaptionLable1.BackColor = System.Drawing.Color.Transparent;
             this.consultationFeeCaptionLable1.Font = new System.Drawing.Font("Segoe UI Black", 9F);
@@ -642,18 +643,18 @@ namespace Bhisakka.UI.Billing
             this.consultationFeeCaptionLable1.Size = new System.Drawing.Size(109, 15);
             this.consultationFeeCaptionLable1.TabIndex = 2;
             this.consultationFeeCaptionLable1.Text = "Consultation Fee";
-            //
+            // 
             // summeryDivider
-            //
+            // 
             this.summeryDivider.Location = new System.Drawing.Point(19, 45);
             this.summeryDivider.Name = "summeryDivider";
             this.summeryDivider.Size = new System.Drawing.Size(243, 26);
             this.summeryDivider.TabIndex = 1;
             this.summeryDivider.TabStop = false;
             this.summeryDivider.Text = "lMaterialDivider3";
-            //
+            // 
             // summaryTitleLabel
-            //
+            // 
             this.summaryTitleLabel.AutoSize = true;
             this.summaryTitleLabel.BackColor = System.Drawing.Color.Transparent;
             this.summaryTitleLabel.Font = new System.Drawing.Font("Georgia", 10.2F, System.Drawing.FontStyle.Bold);
@@ -663,9 +664,9 @@ namespace Bhisakka.UI.Billing
             this.summaryTitleLabel.Size = new System.Drawing.Size(133, 17);
             this.summaryTitleLabel.TabIndex = 0;
             this.summaryTitleLabel.Text = "Billing Summary";
-            //
+            // 
             // revenuePanel
-            //
+            // 
             this.revenuePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(234)))));
             this.revenuePanel.Controls.Add(this.revenueLabel);
             this.revenuePanel.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -675,10 +676,9 @@ namespace Bhisakka.UI.Billing
             this.revenuePanel.Padding = new System.Windows.Forms.Padding(24, 0, 24, 0);
             this.revenuePanel.Size = new System.Drawing.Size(1369, 40);
             this.revenuePanel.TabIndex = 4;
-            //
+            // 
             // revenueLabel
-            //
-            this.revenueLabel.AutoSize = false;
+            // 
             this.revenueLabel.BackColor = System.Drawing.Color.Transparent;
             this.revenueLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.revenueLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F);
@@ -689,9 +689,9 @@ namespace Bhisakka.UI.Billing
             this.revenueLabel.TabIndex = 0;
             this.revenueLabel.Text = "Latest revenue: —";
             this.revenueLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            //
+            // 
             // InvoiceGenerationForm
-            //
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
@@ -699,6 +699,7 @@ namespace Bhisakka.UI.Billing
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.revenuePanel);
             this.ForeColor = System.Drawing.Color.Gray;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(1120, 620);
             this.Name = "InvoiceGenerationForm";

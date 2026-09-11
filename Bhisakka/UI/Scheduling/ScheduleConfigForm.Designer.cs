@@ -20,350 +20,431 @@ namespace Bhisakka.UI.Scheduling
 
         private void InitializeComponent()
         {
-            lblTitle = new MaterialComponents.LMaterialLabel();
-
-            grpTemplate = new MaterialComponents.LMaterialGroupBox();
-            lblDayOfWeek = new MaterialComponents.LMaterialLabel();
-            cboDayOfWeek = new MaterialComponents.LMaterialComboBox();
-            lblBlockType = new MaterialComponents.LMaterialLabel();
-            cboBlockType = new MaterialComponents.LMaterialComboBox();
-            txtLabel = new MaterialComponents.LMaterialTextBox();
-            dtpStart = new MaterialComponents.LMaterialDateTimePicker();
-            dtpEnd = new MaterialComponents.LMaterialDateTimePicker();
-            lblSlotDuration = new MaterialComponents.LMaterialLabel();
-            cboSlotDuration = new MaterialComponents.LMaterialComboBox();
-            chkIsActive = new MaterialComponents.LMaterialCheckBox();
-            btnAddTemplate = new MaterialComponents.LMaterialButton();
-            btnUpdateTemplate = new MaterialComponents.LMaterialButton();
-            btnDeleteTemplate = new MaterialComponents.LMaterialButton();
-            gridTemplates = new MaterialComponents.LMaterialDataGridView();
-
-            grpSuddenBlock = new MaterialComponents.LMaterialGroupBox();
-            dtpBlockDate = new MaterialComponents.LMaterialDateTimePicker();
-            dtpBlockStart = new MaterialComponents.LMaterialDateTimePicker();
-            dtpBlockEnd = new MaterialComponents.LMaterialDateTimePicker();
-            txtReason = new MaterialComponents.LMaterialTextBox();
-            btnAddBlock = new MaterialComponents.LMaterialButton();
-
-            grpPreview = new MaterialComponents.LMaterialGroupBox();
-            calAvailability = new MaterialComponents.LMaterialMonthCalendar();
-            lblPreviewInfo = new MaterialComponents.LMaterialLabel();
-            lstAvailableSlots = new MaterialComponents.LMaterialListBox();
-
-            SuspendLayout();
-
-            //
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheduleConfigForm));
+            this.lblTitle = new MaterialComponents.LMaterialLabel();
+            this.grpTemplate = new MaterialComponents.LMaterialGroupBox();
+            this.lblDayOfWeek = new MaterialComponents.LMaterialLabel();
+            this.cboDayOfWeek = new MaterialComponents.LMaterialComboBox();
+            this.lblBlockType = new MaterialComponents.LMaterialLabel();
+            this.cboBlockType = new MaterialComponents.LMaterialComboBox();
+            this.txtLabel = new MaterialComponents.LMaterialTextBox();
+            this.dtpStart = new MaterialComponents.LMaterialDateTimePicker();
+            this.dtpEnd = new MaterialComponents.LMaterialDateTimePicker();
+            this.lblSlotDuration = new MaterialComponents.LMaterialLabel();
+            this.cboSlotDuration = new MaterialComponents.LMaterialComboBox();
+            this.chkIsActive = new MaterialComponents.LMaterialCheckBox();
+            this.btnAddTemplate = new MaterialComponents.LMaterialButton();
+            this.btnUpdateTemplate = new MaterialComponents.LMaterialButton();
+            this.btnDeleteTemplate = new MaterialComponents.LMaterialButton();
+            this.gridTemplates = new MaterialComponents.LMaterialDataGridView();
+            this.grpSuddenBlock = new MaterialComponents.LMaterialGroupBox();
+            this.dtpBlockDate = new MaterialComponents.LMaterialDateTimePicker();
+            this.dtpBlockStart = new MaterialComponents.LMaterialDateTimePicker();
+            this.dtpBlockEnd = new MaterialComponents.LMaterialDateTimePicker();
+            this.txtReason = new MaterialComponents.LMaterialTextBox();
+            this.btnAddBlock = new MaterialComponents.LMaterialButton();
+            this.grpPreview = new MaterialComponents.LMaterialGroupBox();
+            this.calAvailability = new MaterialComponents.LMaterialMonthCalendar();
+            this.lblPreviewInfo = new MaterialComponents.LMaterialLabel();
+            this.lstAvailableSlots = new MaterialComponents.LMaterialListBox();
+            this.grpTemplate.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridTemplates)).BeginInit();
+            this.grpSuddenBlock.SuspendLayout();
+            this.grpPreview.SuspendLayout();
+            this.SuspendLayout();
+            // 
             // lblTitle
-            //
-            lblTitle.AutoSize = false;
-            lblTitle.BackColor = Color.Transparent;
-            lblTitle.TypeRole = MaterialComponents.LMaterialTypeRole.HeadlineSmall;
-            lblTitle.Location = new Point(24, 20);
-            lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(900, 36);
-            lblTitle.TabIndex = 0;
-            lblTitle.Text = "Doctor Schedule && Booking-Window Configuration";
-
-            //
+            // 
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 18F);
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            this.lblTitle.Location = new System.Drawing.Point(24, 20);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(900, 36);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "Doctor Schedule && Booking-Window Configuration";
+            this.lblTitle.TypeRole = MaterialComponents.LMaterialTypeRole.HeadlineSmall;
+            // 
             // grpTemplate
-            //
-            grpTemplate.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            grpTemplate.Location = new Point(24, 66);
-            grpTemplate.Padding = new Padding(16);
-            grpTemplate.Name = "grpTemplate";
-            grpTemplate.Size = new Size(700, 726);
-            grpTemplate.TabIndex = 1;
-            grpTemplate.Text = "Weekly Recurring Template";
-
-            //
+            // 
+            this.grpTemplate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.grpTemplate.Controls.Add(this.lblDayOfWeek);
+            this.grpTemplate.Controls.Add(this.cboDayOfWeek);
+            this.grpTemplate.Controls.Add(this.lblBlockType);
+            this.grpTemplate.Controls.Add(this.cboBlockType);
+            this.grpTemplate.Controls.Add(this.txtLabel);
+            this.grpTemplate.Controls.Add(this.dtpStart);
+            this.grpTemplate.Controls.Add(this.dtpEnd);
+            this.grpTemplate.Controls.Add(this.lblSlotDuration);
+            this.grpTemplate.Controls.Add(this.cboSlotDuration);
+            this.grpTemplate.Controls.Add(this.chkIsActive);
+            this.grpTemplate.Controls.Add(this.btnAddTemplate);
+            this.grpTemplate.Controls.Add(this.btnUpdateTemplate);
+            this.grpTemplate.Controls.Add(this.btnDeleteTemplate);
+            this.grpTemplate.Controls.Add(this.gridTemplates);
+            this.grpTemplate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.grpTemplate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(79)))), ((int)(((byte)(39)))));
+            this.grpTemplate.Location = new System.Drawing.Point(24, 66);
+            this.grpTemplate.Name = "grpTemplate";
+            this.grpTemplate.Padding = new System.Windows.Forms.Padding(16);
+            this.grpTemplate.Size = new System.Drawing.Size(700, 726);
+            this.grpTemplate.TabIndex = 1;
+            this.grpTemplate.TabStop = false;
+            this.grpTemplate.Text = "Weekly Recurring Template";
+            // 
             // lblDayOfWeek
-            //
-            lblDayOfWeek.AutoSize = false;
-            lblDayOfWeek.BackColor = Color.Transparent;
-            lblDayOfWeek.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
-            lblDayOfWeek.Location = new Point(16, 30);
-            lblDayOfWeek.Name = "lblDayOfWeek";
-            lblDayOfWeek.Size = new Size(200, 20);
-            lblDayOfWeek.TabIndex = 0;
-            lblDayOfWeek.Text = "Day of Week";
-
-            //
+            // 
+            this.lblDayOfWeek.BackColor = System.Drawing.Color.Transparent;
+            this.lblDayOfWeek.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
+            this.lblDayOfWeek.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblDayOfWeek.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            this.lblDayOfWeek.Location = new System.Drawing.Point(16, 30);
+            this.lblDayOfWeek.Name = "lblDayOfWeek";
+            this.lblDayOfWeek.Size = new System.Drawing.Size(200, 20);
+            this.lblDayOfWeek.TabIndex = 0;
+            this.lblDayOfWeek.Text = "Day of Week";
+            // 
             // cboDayOfWeek
-            //
-            cboDayOfWeek.Location = new Point(16, 52);
-            cboDayOfWeek.Name = "cboDayOfWeek";
-            cboDayOfWeek.Size = new Size(300, 40);
-            cboDayOfWeek.TabIndex = 1;
-
-            //
+            // 
+            this.cboDayOfWeek.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(226)))));
+            this.cboDayOfWeek.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboDayOfWeek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDayOfWeek.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboDayOfWeek.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cboDayOfWeek.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            this.cboDayOfWeek.IntegralHeight = false;
+            this.cboDayOfWeek.ItemHeight = 36;
+            this.cboDayOfWeek.Location = new System.Drawing.Point(16, 52);
+            this.cboDayOfWeek.Name = "cboDayOfWeek";
+            this.cboDayOfWeek.Size = new System.Drawing.Size(300, 42);
+            this.cboDayOfWeek.TabIndex = 1;
+            // 
             // lblBlockType
-            //
-            lblBlockType.AutoSize = false;
-            lblBlockType.BackColor = Color.Transparent;
-            lblBlockType.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
-            lblBlockType.Location = new Point(340, 30);
-            lblBlockType.Name = "lblBlockType";
-            lblBlockType.Size = new Size(200, 20);
-            lblBlockType.TabIndex = 2;
-            lblBlockType.Text = "Block Type";
-
-            //
+            // 
+            this.lblBlockType.BackColor = System.Drawing.Color.Transparent;
+            this.lblBlockType.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
+            this.lblBlockType.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblBlockType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            this.lblBlockType.Location = new System.Drawing.Point(340, 30);
+            this.lblBlockType.Name = "lblBlockType";
+            this.lblBlockType.Size = new System.Drawing.Size(200, 20);
+            this.lblBlockType.TabIndex = 2;
+            this.lblBlockType.Text = "Block Type";
+            // 
             // cboBlockType
-            //
-            cboBlockType.Location = new Point(340, 52);
-            cboBlockType.Name = "cboBlockType";
-            cboBlockType.Size = new Size(300, 40);
-            cboBlockType.TabIndex = 3;
-            cboBlockType.SelectedIndexChanged += cboBlockType_SelectedIndexChanged;
-
-            //
+            // 
+            this.cboBlockType.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(226)))));
+            this.cboBlockType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboBlockType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboBlockType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboBlockType.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cboBlockType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            this.cboBlockType.IntegralHeight = false;
+            this.cboBlockType.ItemHeight = 36;
+            this.cboBlockType.Location = new System.Drawing.Point(340, 52);
+            this.cboBlockType.Name = "cboBlockType";
+            this.cboBlockType.Size = new System.Drawing.Size(300, 42);
+            this.cboBlockType.TabIndex = 3;
+            // 
             // txtLabel
-            //
-            txtLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtLabel.Location = new Point(16, 104);
-            txtLabel.LabelText = "Label";
-            txtLabel.Name = "txtLabel";
-            txtLabel.Size = new Size(660, 84);
-            txtLabel.TabIndex = 4;
-
-            //
+            // 
+            this.txtLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLabel.Location = new System.Drawing.Point(16, 104);
+            this.txtLabel.Name = "txtLabel";
+            this.txtLabel.Size = new System.Drawing.Size(660, 84);
+            this.txtLabel.TabIndex = 4;
+            // 
             // dtpStart
-            //
-            dtpStart.Location = new Point(16, 194);
-            dtpStart.LabelText = "Start Time";
-            dtpStart.Format = DateTimePickerFormat.Time;
-            dtpStart.Name = "dtpStart";
-            dtpStart.Size = new Size(322, 84);
-            dtpStart.TabIndex = 5;
-
-            //
+            // 
+            this.dtpStart.CustomFormat = null;
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpStart.LabelText = "Start Time";
+            this.dtpStart.Location = new System.Drawing.Point(16, 194);
+            this.dtpStart.Name = "dtpStart";
+            this.dtpStart.Size = new System.Drawing.Size(322, 84);
+            this.dtpStart.TabIndex = 5;
+            this.dtpStart.Value = new System.DateTime(2026, 9, 11, 13, 31, 35, 511);
+            // 
             // dtpEnd
-            //
-            dtpEnd.Location = new Point(354, 194);
-            dtpEnd.LabelText = "End Time";
-            dtpEnd.Format = DateTimePickerFormat.Time;
-            dtpEnd.Name = "dtpEnd";
-            dtpEnd.Size = new Size(322, 84);
-            dtpEnd.TabIndex = 6;
-
-            //
+            // 
+            this.dtpEnd.CustomFormat = null;
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpEnd.LabelText = "End Time";
+            this.dtpEnd.Location = new System.Drawing.Point(354, 194);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(322, 84);
+            this.dtpEnd.TabIndex = 6;
+            this.dtpEnd.Value = new System.DateTime(2026, 9, 11, 13, 31, 35, 512);
+            // 
             // lblSlotDuration
-            //
-            lblSlotDuration.AutoSize = false;
-            lblSlotDuration.BackColor = Color.Transparent;
-            lblSlotDuration.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
-            lblSlotDuration.Location = new Point(16, 288);
-            lblSlotDuration.Name = "lblSlotDuration";
-            lblSlotDuration.Size = new Size(200, 20);
-            lblSlotDuration.TabIndex = 7;
-            lblSlotDuration.Text = "Slot Duration (min)";
-
-            //
+            // 
+            this.lblSlotDuration.BackColor = System.Drawing.Color.Transparent;
+            this.lblSlotDuration.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
+            this.lblSlotDuration.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblSlotDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            this.lblSlotDuration.Location = new System.Drawing.Point(16, 288);
+            this.lblSlotDuration.Name = "lblSlotDuration";
+            this.lblSlotDuration.Size = new System.Drawing.Size(200, 20);
+            this.lblSlotDuration.TabIndex = 7;
+            this.lblSlotDuration.Text = "Slot Duration (min)";
+            // 
             // cboSlotDuration
-            //
-            cboSlotDuration.Location = new Point(16, 310);
-            cboSlotDuration.Name = "cboSlotDuration";
-            cboSlotDuration.Size = new Size(160, 40);
-            cboSlotDuration.TabIndex = 8;
-
-            //
+            // 
+            this.cboSlotDuration.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(234)))), ((int)(((byte)(226)))));
+            this.cboSlotDuration.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboSlotDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboSlotDuration.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cboSlotDuration.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.cboSlotDuration.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            this.cboSlotDuration.IntegralHeight = false;
+            this.cboSlotDuration.ItemHeight = 36;
+            this.cboSlotDuration.Location = new System.Drawing.Point(16, 310);
+            this.cboSlotDuration.Name = "cboSlotDuration";
+            this.cboSlotDuration.Size = new System.Drawing.Size(160, 42);
+            this.cboSlotDuration.TabIndex = 8;
+            // 
             // chkIsActive
-            //
-            chkIsActive.BackColor = Color.Transparent;
-            chkIsActive.Checked = true;
-            chkIsActive.Location = new Point(200, 314);
-            chkIsActive.Name = "chkIsActive";
-            chkIsActive.Size = new Size(140, 32);
-            chkIsActive.TabIndex = 9;
-            chkIsActive.Text = "Active";
-
-            //
+            // 
+            this.chkIsActive.BackColor = System.Drawing.Color.Transparent;
+            this.chkIsActive.Checked = true;
+            this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkIsActive.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkIsActive.Location = new System.Drawing.Point(200, 314);
+            this.chkIsActive.Name = "chkIsActive";
+            this.chkIsActive.Size = new System.Drawing.Size(140, 32);
+            this.chkIsActive.TabIndex = 9;
+            this.chkIsActive.Text = "Active";
+            this.chkIsActive.UseVisualStyleBackColor = false;
+            // 
             // btnAddTemplate
-            //
-            btnAddTemplate.Location = new Point(16, 366);
-            btnAddTemplate.Name = "btnAddTemplate";
-            btnAddTemplate.Size = new Size(150, 40);
-            btnAddTemplate.TabIndex = 10;
-            btnAddTemplate.Text = "Add";
-            btnAddTemplate.Click += btnAddTemplate_Click;
-
-            //
+            // 
+            this.btnAddTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTemplate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.btnAddTemplate.Location = new System.Drawing.Point(16, 366);
+            this.btnAddTemplate.Name = "btnAddTemplate";
+            this.btnAddTemplate.Size = new System.Drawing.Size(150, 40);
+            this.btnAddTemplate.TabIndex = 10;
+            this.btnAddTemplate.Text = "Add";
+            // 
             // btnUpdateTemplate
-            //
-            btnUpdateTemplate.Variant = MaterialComponents.LMaterialButtonVariant.Tonal;
-            btnUpdateTemplate.Location = new Point(176, 366);
-            btnUpdateTemplate.Name = "btnUpdateTemplate";
-            btnUpdateTemplate.Size = new Size(150, 40);
-            btnUpdateTemplate.TabIndex = 11;
-            btnUpdateTemplate.Text = "Update";
-            btnUpdateTemplate.Click += btnUpdateTemplate_Click;
-
-            //
+            // 
+            this.btnUpdateTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdateTemplate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.btnUpdateTemplate.Location = new System.Drawing.Point(176, 366);
+            this.btnUpdateTemplate.Name = "btnUpdateTemplate";
+            this.btnUpdateTemplate.Size = new System.Drawing.Size(150, 40);
+            this.btnUpdateTemplate.TabIndex = 11;
+            this.btnUpdateTemplate.Text = "Update";
+            this.btnUpdateTemplate.Variant = MaterialComponents.LMaterialButtonVariant.Tonal;
+            // 
             // btnDeleteTemplate
-            //
-            btnDeleteTemplate.Variant = MaterialComponents.LMaterialButtonVariant.Outlined;
-            btnDeleteTemplate.Location = new Point(336, 366);
-            btnDeleteTemplate.Name = "btnDeleteTemplate";
-            btnDeleteTemplate.Size = new Size(150, 40);
-            btnDeleteTemplate.TabIndex = 12;
-            btnDeleteTemplate.Text = "Delete";
-            btnDeleteTemplate.Click += btnDeleteTemplate_Click;
-
-            //
+            // 
+            this.btnDeleteTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteTemplate.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.btnDeleteTemplate.Location = new System.Drawing.Point(336, 366);
+            this.btnDeleteTemplate.Name = "btnDeleteTemplate";
+            this.btnDeleteTemplate.Size = new System.Drawing.Size(150, 40);
+            this.btnDeleteTemplate.TabIndex = 12;
+            this.btnDeleteTemplate.Text = "Delete";
+            this.btnDeleteTemplate.Variant = MaterialComponents.LMaterialButtonVariant.Outlined;
+            // 
             // gridTemplates
-            //
-            gridTemplates.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gridTemplates.Location = new Point(16, 420);
-            gridTemplates.Name = "gridTemplates";
-            gridTemplates.Size = new Size(668, 288);
-            gridTemplates.TabIndex = 13;
-            gridTemplates.SelectionChanged += gridTemplates_SelectionChanged;
-
-            grpTemplate.Controls.Add(lblDayOfWeek);
-            grpTemplate.Controls.Add(cboDayOfWeek);
-            grpTemplate.Controls.Add(lblBlockType);
-            grpTemplate.Controls.Add(cboBlockType);
-            grpTemplate.Controls.Add(txtLabel);
-            grpTemplate.Controls.Add(dtpStart);
-            grpTemplate.Controls.Add(dtpEnd);
-            grpTemplate.Controls.Add(lblSlotDuration);
-            grpTemplate.Controls.Add(cboSlotDuration);
-            grpTemplate.Controls.Add(chkIsActive);
-            grpTemplate.Controls.Add(btnAddTemplate);
-            grpTemplate.Controls.Add(btnUpdateTemplate);
-            grpTemplate.Controls.Add(btnDeleteTemplate);
-            grpTemplate.Controls.Add(gridTemplates);
-
-            //
+            // 
+            this.gridTemplates.AllowUserToAddRows = false;
+            this.gridTemplates.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridTemplates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gridTemplates.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            this.gridTemplates.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.gridTemplates.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.gridTemplates.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gridTemplates.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.gridTemplates.ColumnHeadersHeight = 48;
+            this.gridTemplates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(248)))), ((int)(((byte)(245)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(219)))), ((int)(((byte)(200)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(65)))), ((int)(((byte)(49)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.gridTemplates.DefaultCellStyle = dataGridViewCellStyle2;
+            this.gridTemplates.EnableHeadersVisualStyles = false;
+            this.gridTemplates.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(194)))), ((int)(((byte)(184)))));
+            this.gridTemplates.Location = new System.Drawing.Point(16, 420);
+            this.gridTemplates.Name = "gridTemplates";
+            this.gridTemplates.RowHeadersVisible = false;
+            this.gridTemplates.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.gridTemplates.Size = new System.Drawing.Size(668, 288);
+            this.gridTemplates.TabIndex = 13;
+            // 
             // grpSuddenBlock
-            //
-            grpSuddenBlock.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            grpSuddenBlock.Location = new Point(740, 66);
-            grpSuddenBlock.Padding = new Padding(16);
-            grpSuddenBlock.Name = "grpSuddenBlock";
-            grpSuddenBlock.Size = new Size(708, 356);
-            grpSuddenBlock.TabIndex = 2;
-            grpSuddenBlock.Text = "Sudden Block (One-Off Override)";
-
-            //
+            // 
+            this.grpSuddenBlock.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpSuddenBlock.Controls.Add(this.dtpBlockDate);
+            this.grpSuddenBlock.Controls.Add(this.dtpBlockStart);
+            this.grpSuddenBlock.Controls.Add(this.dtpBlockEnd);
+            this.grpSuddenBlock.Controls.Add(this.txtReason);
+            this.grpSuddenBlock.Controls.Add(this.btnAddBlock);
+            this.grpSuddenBlock.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.grpSuddenBlock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(79)))), ((int)(((byte)(39)))));
+            this.grpSuddenBlock.Location = new System.Drawing.Point(740, 66);
+            this.grpSuddenBlock.Name = "grpSuddenBlock";
+            this.grpSuddenBlock.Padding = new System.Windows.Forms.Padding(16);
+            this.grpSuddenBlock.Size = new System.Drawing.Size(708, 356);
+            this.grpSuddenBlock.TabIndex = 2;
+            this.grpSuddenBlock.TabStop = false;
+            this.grpSuddenBlock.Text = "Sudden Block (One-Off Override)";
+            // 
             // dtpBlockDate
-            //
-            dtpBlockDate.Location = new Point(16, 30);
-            dtpBlockDate.LabelText = "Block Date";
-            dtpBlockDate.Name = "dtpBlockDate";
-            dtpBlockDate.Size = new Size(330, 84);
-            dtpBlockDate.TabIndex = 0;
-
-            //
+            // 
+            this.dtpBlockDate.CustomFormat = null;
+            this.dtpBlockDate.LabelText = "Block Date";
+            this.dtpBlockDate.Location = new System.Drawing.Point(16, 30);
+            this.dtpBlockDate.Name = "dtpBlockDate";
+            this.dtpBlockDate.Size = new System.Drawing.Size(330, 84);
+            this.dtpBlockDate.TabIndex = 0;
+            this.dtpBlockDate.Value = new System.DateTime(2026, 9, 11, 13, 31, 35, 515);
+            // 
             // dtpBlockStart
-            //
-            dtpBlockStart.Location = new Point(16, 120);
-            dtpBlockStart.LabelText = "Start Time";
-            dtpBlockStart.Format = DateTimePickerFormat.Time;
-            dtpBlockStart.Name = "dtpBlockStart";
-            dtpBlockStart.Size = new Size(330, 84);
-            dtpBlockStart.TabIndex = 1;
-
-            //
+            // 
+            this.dtpBlockStart.CustomFormat = null;
+            this.dtpBlockStart.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpBlockStart.LabelText = "Start Time";
+            this.dtpBlockStart.Location = new System.Drawing.Point(16, 120);
+            this.dtpBlockStart.Name = "dtpBlockStart";
+            this.dtpBlockStart.Size = new System.Drawing.Size(330, 84);
+            this.dtpBlockStart.TabIndex = 1;
+            this.dtpBlockStart.Value = new System.DateTime(2026, 9, 11, 13, 31, 35, 517);
+            // 
             // dtpBlockEnd
-            //
-            dtpBlockEnd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            dtpBlockEnd.Location = new Point(362, 120);
-            dtpBlockEnd.LabelText = "End Time";
-            dtpBlockEnd.Format = DateTimePickerFormat.Time;
-            dtpBlockEnd.Name = "dtpBlockEnd";
-            dtpBlockEnd.Size = new Size(330, 84);
-            dtpBlockEnd.TabIndex = 2;
-
-            //
+            // 
+            this.dtpBlockEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpBlockEnd.CustomFormat = null;
+            this.dtpBlockEnd.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpBlockEnd.LabelText = "End Time";
+            this.dtpBlockEnd.Location = new System.Drawing.Point(362, 120);
+            this.dtpBlockEnd.Name = "dtpBlockEnd";
+            this.dtpBlockEnd.Size = new System.Drawing.Size(330, 84);
+            this.dtpBlockEnd.TabIndex = 2;
+            this.dtpBlockEnd.Value = new System.DateTime(2026, 9, 11, 13, 31, 35, 519);
+            // 
             // txtReason
-            //
-            txtReason.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            txtReason.Location = new Point(16, 210);
-            txtReason.LabelText = "Reason";
-            txtReason.Name = "txtReason";
-            txtReason.Size = new Size(676, 84);
-            txtReason.TabIndex = 3;
-
-            //
+            // 
+            this.txtReason.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReason.LabelText = "Reason";
+            this.txtReason.Location = new System.Drawing.Point(16, 210);
+            this.txtReason.Name = "txtReason";
+            this.txtReason.Size = new System.Drawing.Size(676, 84);
+            this.txtReason.TabIndex = 3;
+            // 
             // btnAddBlock
-            //
-            btnAddBlock.Location = new Point(16, 302);
-            btnAddBlock.Name = "btnAddBlock";
-            btnAddBlock.Size = new Size(220, 40);
-            btnAddBlock.TabIndex = 4;
-            btnAddBlock.Text = "Add Sudden Block";
-            btnAddBlock.Click += btnAddBlock_Click;
-
-            grpSuddenBlock.Controls.Add(dtpBlockDate);
-            grpSuddenBlock.Controls.Add(dtpBlockStart);
-            grpSuddenBlock.Controls.Add(dtpBlockEnd);
-            grpSuddenBlock.Controls.Add(txtReason);
-            grpSuddenBlock.Controls.Add(btnAddBlock);
-
-            //
+            // 
+            this.btnAddBlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddBlock.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.btnAddBlock.Location = new System.Drawing.Point(16, 302);
+            this.btnAddBlock.Name = "btnAddBlock";
+            this.btnAddBlock.Size = new System.Drawing.Size(220, 40);
+            this.btnAddBlock.TabIndex = 4;
+            this.btnAddBlock.Text = "Add Sudden Block";
+            // 
             // grpPreview
-            //
-            grpPreview.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            grpPreview.Location = new Point(740, 434);
-            grpPreview.Padding = new Padding(16);
-            grpPreview.Name = "grpPreview";
-            grpPreview.Size = new Size(708, 358);
-            grpPreview.TabIndex = 3;
-            grpPreview.Text = "Booking Window Preview";
-
-            //
+            // 
+            this.grpPreview.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpPreview.Controls.Add(this.calAvailability);
+            this.grpPreview.Controls.Add(this.lblPreviewInfo);
+            this.grpPreview.Controls.Add(this.lstAvailableSlots);
+            this.grpPreview.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
+            this.grpPreview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(79)))), ((int)(((byte)(39)))));
+            this.grpPreview.Location = new System.Drawing.Point(740, 434);
+            this.grpPreview.Name = "grpPreview";
+            this.grpPreview.Padding = new System.Windows.Forms.Padding(16);
+            this.grpPreview.Size = new System.Drawing.Size(708, 358);
+            this.grpPreview.TabIndex = 3;
+            this.grpPreview.TabStop = false;
+            this.grpPreview.Text = "Booking Window Preview";
+            // 
             // calAvailability
-            //
-            calAvailability.Location = new Point(16, 34);
-            calAvailability.Name = "calAvailability";
-            calAvailability.Size = new Size(280, 220);
-            calAvailability.TabIndex = 0;
-            calAvailability.MaxSelectionCount = 1;
-            calAvailability.DateSelected += calAvailability_DateSelected;
-
-            //
+            // 
+            this.calAvailability.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(229)))), ((int)(((byte)(221)))));
+            this.calAvailability.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.calAvailability.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            this.calAvailability.Location = new System.Drawing.Point(16, 34);
+            this.calAvailability.MaxSelectionCount = 1;
+            this.calAvailability.Name = "calAvailability";
+            this.calAvailability.TabIndex = 0;
+            this.calAvailability.TitleBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(79)))), ((int)(((byte)(39)))));
+            this.calAvailability.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.calAvailability.TrailingForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(97)))), ((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            // 
             // lblPreviewInfo
-            //
-            lblPreviewInfo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            lblPreviewInfo.AutoSize = false;
-            lblPreviewInfo.BackColor = Color.Transparent;
-            lblPreviewInfo.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
-            lblPreviewInfo.Location = new Point(312, 34);
-            lblPreviewInfo.Name = "lblPreviewInfo";
-            lblPreviewInfo.Size = new Size(380, 220);
-            lblPreviewInfo.TabIndex = 1;
-            lblPreviewInfo.Text = "Select a date to preview available slots.";
-
-            //
+            // 
+            this.lblPreviewInfo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPreviewInfo.BackColor = System.Drawing.Color.Transparent;
+            this.lblPreviewInfo.ColorRole = MaterialComponents.LMaterialColorRole.OnSurfaceVariant;
+            this.lblPreviewInfo.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.lblPreviewInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(68)))), ((int)(((byte)(60)))));
+            this.lblPreviewInfo.Location = new System.Drawing.Point(312, 34);
+            this.lblPreviewInfo.Name = "lblPreviewInfo";
+            this.lblPreviewInfo.Size = new System.Drawing.Size(380, 220);
+            this.lblPreviewInfo.TabIndex = 1;
+            this.lblPreviewInfo.Text = "Select a date to preview available slots.";
+            // 
             // lstAvailableSlots
-            //
-            lstAvailableSlots.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lstAvailableSlots.Location = new Point(16, 266);
-            lstAvailableSlots.Name = "lstAvailableSlots";
-            lstAvailableSlots.Size = new Size(676, 74);
-            lstAvailableSlots.TabIndex = 2;
-
-            grpPreview.Controls.Add(calAvailability);
-            grpPreview.Controls.Add(lblPreviewInfo);
-            grpPreview.Controls.Add(lstAvailableSlots);
-
-            //
+            // 
+            this.lstAvailableSlots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lstAvailableSlots.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(241)))), ((int)(((byte)(234)))));
+            this.lstAvailableSlots.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lstAvailableSlots.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lstAvailableSlots.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.lstAvailableSlots.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(26)))), ((int)(((byte)(21)))));
+            this.lstAvailableSlots.IntegralHeight = false;
+            this.lstAvailableSlots.ItemHeight = 40;
+            this.lstAvailableSlots.Location = new System.Drawing.Point(16, 266);
+            this.lstAvailableSlots.Name = "lstAvailableSlots";
+            this.lstAvailableSlots.Size = new System.Drawing.Size(676, 74);
+            this.lstAvailableSlots.TabIndex = 2;
+            // 
             // ScheduleConfigForm
-            //
-            AutoScaleDimensions = new SizeF(8F, 19F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1472, 816);
-            Controls.Add(lblTitle);
-            Controls.Add(grpTemplate);
-            Controls.Add(grpSuddenBlock);
-            Controls.Add(grpPreview);
-            MinimumSize = new Size(1220, 740);
-            Name = "ScheduleConfigForm";
-            Text = "Schedule Configuration";
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1472, 816);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.grpTemplate);
+            this.Controls.Add(this.grpSuddenBlock);
+            this.Controls.Add(this.grpPreview);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1220, 740);
+            this.Name = "ScheduleConfigForm";
+            this.Text = "Schedule Configuration";
+            this.grpTemplate.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridTemplates)).EndInit();
+            this.grpSuddenBlock.ResumeLayout(false);
+            this.grpPreview.ResumeLayout(false);
+            this.ResumeLayout(false);
 
-            ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion

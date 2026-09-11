@@ -21,6 +21,7 @@ namespace Bhisakka.UI
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsultationForm));
             this.pnlLeft = new MaterialComponents.LMaterialPanel();
             this.grpQueue = new MaterialComponents.LMaterialGroupBox();
             this.lstQueue = new MaterialComponents.LMaterialListBox();
@@ -518,6 +519,7 @@ namespace Bhisakka.UI
             this.ClientSize = new System.Drawing.Size(1280, 850);
             this.Controls.Add(this.pnlRight);
             this.Controls.Add(this.pnlLeft);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1120, 760);
             this.Name = "ConsultationForm";
             this.Text = "Consultation Workspace";
