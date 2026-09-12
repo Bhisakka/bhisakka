@@ -103,7 +103,7 @@ namespace Bhisakka.UI.Booking
             RefreshSlots();
         }
 
-        private void btnBook_Click(object sender, EventArgs e)
+        private void btnBook_Click_1(object sender, EventArgs e)
         {
             PatientOption selectedPatient = cboPatient.SelectedItem as PatientOption;
             if (selectedPatient == null)

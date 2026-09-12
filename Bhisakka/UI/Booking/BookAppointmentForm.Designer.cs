@@ -149,6 +149,7 @@ namespace Bhisakka.UI.Booking
             this.btnBook.Size = new System.Drawing.Size(400, 44);
             this.btnBook.TabIndex = 5;
             this.btnBook.Text = "Book Appointment";
+            this.btnBook.Click += new System.EventHandler(this.btnBook_Click_1);
             // 
             // BookAppointmentForm
             // 
