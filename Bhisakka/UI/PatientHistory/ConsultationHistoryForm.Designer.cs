@@ -61,7 +61,7 @@ namespace Bhisakka.UI.PatientHistory
             this.txtSearch.LabelText = "Patient First or Last Name";
             this.txtSearch.Location = new System.Drawing.Point(16, 26);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(972, 84);
+            this.txtSearch.Size = new System.Drawing.Size(832, 84);
             this.txtSearch.TabIndex = 0;
             // 
             // btnSearch
@@ -69,7 +69,7 @@ namespace Bhisakka.UI.PatientHistory
             this.btnSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 10.5F);
-            this.btnSearch.Location = new System.Drawing.Point(1656, 42);
+            this.btnSearch.Location = new System.Drawing.Point(864, 42);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(120, 40);
             this.btnSearch.TabIndex = 1;
@@ -189,6 +189,7 @@ namespace Bhisakka.UI.PatientHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AcceptButton = this.btnSearch;
             this.ClientSize = new System.Drawing.Size(1000, 760);
             this.Controls.Add(this.grpHistory);
             this.Controls.Add(this.grpResults);
