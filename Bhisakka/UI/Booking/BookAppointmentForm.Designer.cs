@@ -106,7 +106,7 @@ namespace Bhisakka.UI.Booking
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(400, 84);
             this.dtpDate.TabIndex = 2;
-            this.dtpDate.Value = new System.DateTime(2026, 9, 11, 13, 30, 29, 462);
+            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // lblSlot
             // 
